@@ -1,15 +1,16 @@
 /* BODY AND SCENE */
 body {
   margin: 0;
-  background: #000;
+  background: #111;
+  overflow: hidden; /* hide scrollbars */
 }
 
 #scene {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: #111;
-  overflow: hidden;
+  width: 800px;
+  height: 556px;
+  transform: scale(calc(100vw / 800));
+  transform-origin: top left;
 }
 
 
