@@ -103,3 +103,11 @@ body {
   width: 280px;
   height: 160px
 }
+
+#submit-green {
+  pointer-events: none;
+}
+
+#submit-green:not(.hidden) {
+  pointer-events: auto;
+}
