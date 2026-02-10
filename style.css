@@ -20,14 +20,15 @@ body {
 
 #input-container {
   position: absolute;
-  bottom: 40px;      /* adjust to sit under monitor */
-  left: 50%;
+  bottom: 50px;          /* distance from bottom of #scene */
+  left: 50%;             /* horizontal center */
   transform: translateX(-50%);
-  width: 400px;      /* match input bar width */
-  height: 80px;      /* match input bar height */
-  z-index: 4;
-  border: 2px solid red;
+  width: 400px;          /* match input-bar.png width */
+  height: 80px;          /* match input-bar.png height */
+  z-index: 4;            /* above desk/background */
+    border: 2px solid red;
 }
+
 
 /* Make every image inside the container visible and fill the container */
 #input-container img {
