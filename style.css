@@ -22,19 +22,19 @@ body {
   z-index: 3;
 }
 
+/* Input container styling */
 #input-container {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
+  bottom: 50px;          /* distance from bottom of #scene */
+  left: 50%;             /* center horizontally */
   transform: translateX(-50%);
-  width: 300px;      /* match your input image width */
-  height: 60px;      /* match your input image height */
-  z-index: 5;        /* make it sit above monitor shell for now */
-  border: 2px solid red; /* temporary so you can see it */
+  width: 300px;          /* adjust to match your input bar image */
+  height: 60px;          /* adjust to match your input bar image */
+  z-index: 4;            /* above desk but monitor stays above */
+  /* border: 2px solid red; */ /* optional for debugging */
 }
 
-
-/* Make all images inside fill the container */
+/* Child images fill the container */
 #input-container img {
   position: absolute;
   top: 0;
