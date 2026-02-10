@@ -36,11 +36,12 @@ body {
 
 #power-btn {
   position: absolute;
-  top: 650px;        /* adjust to where button should be */
-  left: 950px;
-  width: 50px;
-  height: 50px;
-  background: red;   /* solid color to see it */
+  top: 1370px;        /* adjust to where button should be */
+  left: 320px;
+  width: 60px;
+  height: 60px;
+ background-color: #1d6dbd;  /* dark gray */
+  border-radius: 50%;      /* makes it a circle */
   cursor: pointer;
   z-index: 1000;     /* above other elements */
 }
