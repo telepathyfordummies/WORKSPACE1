@@ -37,6 +37,16 @@ body {
   color: black;
 }
 
+#monitor-wrapper {
+  width: 500px;   /* whatever the monitor PNG width is */
+  height: 350px;  /* whatever the monitor PNG height is */
+  top: 400px;     /* position on the screen */
+  left: 800px;    /* position on the screen */
+  position: absolute;
+  z-index: 5;     /* behind power button */
+}
+
+
 #monitor-screen {
   pointer-events: none;
 }
