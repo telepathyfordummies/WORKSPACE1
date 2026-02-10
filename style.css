@@ -12,14 +12,14 @@ body {
 /* Scene container */
 #scene {
   position: relative;
-  width: 1200px;               /* fixed container width for now */
+  width: 1200px;               /* fixed container width */
   height: 836px;               /* 1640 / 2360 ratio */
   background: black;
   overflow: hidden;
-  border: 2px solid red;       /* debug border to see container */
+  border: 2px solid red;       /* debug border */
 }
 
-/* Force all direct children to absolute positioning */
+/* Force all children absolute */
 #scene > * {
   position: absolute;
 }
@@ -43,11 +43,12 @@ body {
   z-index: 2;
 }
 
-/* Monitor */
+/* ----------------------------- */
+/* Monitor wrapper */
 #monitor-wrapper {
-  bottom: 250px;       /* floats on desk */
-  left: 45%;
-  width: 28%;
+  bottom: 270px;       /* adjusted to sit on desk */
+  left: 45%;           /* center roughly */
+  width: 28%;          /* scales monitor shell */
   transform: translateX(-50%);
   z-index: 5;
 }
@@ -59,7 +60,7 @@ body {
 
 #monitor-screen {
   position: absolute;
-  top: 12%;
+  top: 12%;            /* fits inside monitor shell */
   left: 12%;
   width: 76%;
   height: 65%;
@@ -71,9 +72,10 @@ body {
   display: none;
 }
 
-/* Input */
+/* ----------------------------- */
+/* Input container */
 #input-container {
-  bottom: 180px;
+  bottom: 180px;       /* sits below monitor */
   left: 50%;
   transform: translateX(-50%);
   width: 25%;
@@ -88,7 +90,7 @@ body {
 #submit-red, #submit-green {
   position: absolute;
   top: 0;
-  right: -60px;
+  right: -60px;        /* right of input bar */
   width: 50px;
   height: auto;
   cursor: pointer;
@@ -98,9 +100,10 @@ body {
   display: none;
 }
 
+/* ----------------------------- */
 /* Power button */
 #power-btn {
-  bottom: 450px;
+  bottom: 450px;       /* above desk, near monitor */
   right: 10%;
   width: 50px;
   height: auto;
@@ -108,12 +111,12 @@ body {
   cursor: pointer;
 }
 
+/* ----------------------------- */
 /* Nameplate */
 #nameplate-base {
-  bottom: 650px;
+  bottom: 650px;       /* floats above monitor */
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
   z-index: 9;
 }
-
