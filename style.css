@@ -37,6 +37,11 @@ body {
   color: black;
 }
 
+#monitor-screen {
+  pointer-events: none;
+}
+
+
 #monitor-on {
   z-index: 2;          /* above shell screen area */
 /*  pointer-events: none; /* clicks pass through */
