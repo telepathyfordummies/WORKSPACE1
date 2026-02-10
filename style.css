@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #000; /* fallback */
+  background: #000; /* fallback if background missing */
 }
 
 /* ----------------------------- */
@@ -14,7 +14,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;      /* scale to viewport */
+  width: 100%;      /* full viewport width */
   height: auto;
   z-index: 0;
 }
@@ -32,10 +32,10 @@
 /* DESK */
 #desk {
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  bottom: 0;        /* sit at bottom of viewport */
+  left: 50%;        /* horizontally center */
   transform: translateX(-50%);
-  width: 70%;       /* proportional to scene */
+  width: 70%;       /* scales the desk proportionally */
   height: auto;
   z-index: 2;
 }
@@ -44,10 +44,10 @@
 /* MONITOR */
 #monitor-wrapper {
   position: absolute;
-  bottom: 35%;      /* adjust as needed */
+  bottom: 35%;      /* nudge up from desk */
   left: 50%;
   transform: translateX(-50%);
-  width: 28%;       /* monitor smaller than desk */
+  width: 28%;       /* monitor width relative to scene */
   height: auto;
   z-index: 5;
 }
@@ -59,7 +59,7 @@
 
 #monitor-screen {
   position: absolute;
-  top: 12%;         /* relative to monitor-wrapper */
+  top: 12%;         /* align inside monitor shell */
   left: 12%;
   width: 76%;
   height: 65%;
@@ -68,7 +68,7 @@
 }
 
 #monitor-screen.off {
-  display: none;
+  display: none;    /* monitor starts off */
 }
 
 /* ----------------------------- */
@@ -105,7 +105,7 @@
 /* POWER BUTTON */
 #power-btn {
   position: absolute;
-  bottom: 50%;
+  bottom: 50%;      /* adjust as needed */
   right: 10%;
   width: 50px;
   height: auto;
@@ -117,7 +117,7 @@
 /* NAMEPLATE */
 #nameplate-base {
   position: absolute;
-  bottom: 65%;
+  bottom: 65%;      /* above desk/monitor */
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
