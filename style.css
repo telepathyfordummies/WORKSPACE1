@@ -20,23 +20,19 @@ body {
 
 #input-container {
   position: absolute;
-  bottom: 10px;          /* distance from bottom of scene */
- width: 363px;          /* pick the desired width for your input bar + buttons */
-  height: 100px;          /* pick the desired height */
-  left: 50%;             /* center horizontally */
+  width: 400px;       /* desired input width */
+  height: 80px;       /* desired input height */
+  bottom: 30px;       /* distance from bottom of scene */
+  left: 50%;
   transform: translateX(-50%);
-  z-index: 10;           /* above desk/background */
-  background: transparent; /* optional for debugging */
-    border: 2px solid red;
+  z-index: 10;        /* above desk/background */
+  background: rgba(255,0,0,0.2); /* temporary to see container */
 }
 
-
-/* Make every image inside the container visible and fill the container */
 #input-container img {
-  position: absolute;  /* relative to container */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: auto;        /* temporarily remove 100% scaling */
+  height: 100%;       /* keep height to fill container vertically */
 }
