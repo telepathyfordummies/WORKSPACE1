@@ -19,24 +19,30 @@ body {
 }
 
 
-/* Container below monitor */
-#input-container {
-  position: absolute;       /* absolute so we can place below monitor */
-  width: 400px;             /* explicit width */
-  height: 80px;             /* explicit height */
-  bottom: 30px;             /* adjust to sit below monitor */
+/* wrapper positions the input below the monitor */
+#input-wrapper {
+  position: absolute;
+  bottom: 30px;        /* distance from bottom of scene */
   left: 50%;
   transform: translateX(-50%);
-    background: rgba(255,0,0,0.2);
-  z-index: 10;              /* above desk/background */
+  width: 400px;        /* desired input width */
+  height: 80px;        /* desired input height */
+  z-index: 10;
 }
 
-/* Child images fill container */
+/* container holds the input images */
+#input-container {
+  position: relative;  /* relative so children are positioned inside it */
+  width: 100%;
+  height: 100%;
+}
+
+/* images fill the container */
 #input-container img {
-  position: absolute;       /* relative to container */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;              /* fill container horizontally */
-  height: 100%;             /* fill container vertically */
+  width: 100%;
+  height: 100%;
   display: block;
 }
