@@ -57,21 +57,27 @@ powerBtn.addEventListener('click', () => {
 </script>
 <!-- NAMEPLATE SCRIPT -->
   <script>
-    const nameplateOne = document.getElementById('nameplate-one');
+const nameplateOne = document.getElementById('nameplate-one');
 const nameplateOther = document.getElementById('nameplate-other');
 
-// Initially show nameplate-one, hide nameplate-other
+// Start with nameplate-one visible, other hidden
 nameplateOne.classList.remove('hidden');
 nameplateOther.classList.add('hidden');
 
-// Toggle only when the actual image is clicked
-[nameplateOne, nameplateOther].forEach(img => {
-  img.addEventListener('click', event => {
-    event.stopPropagation(); // prevent bubbling to parent elements
+function toggleNameplate(e) {
+  const clicked = e.target;
+
+  // Only toggle if the visible nameplate was clicked
+  if (!clicked.classList.contains('hidden')) {
     nameplateOne.classList.toggle('hidden');
     nameplateOther.classList.toggle('hidden');
-  });
-});
+  }
+}
+
+// Attach to both images
+nameplateOne.addEventListener('click', toggleNameplate);
+nameplateOther.addEventListener('click', toggleNameplate);
+
 
 </script>
   
