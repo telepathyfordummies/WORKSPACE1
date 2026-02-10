@@ -43,3 +43,9 @@ body {
   pointer-events: none;
 }
 
+#power-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 999;
+}
+
