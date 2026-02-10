@@ -19,7 +19,13 @@
     <!-- MONITOR -->
     <div id="monitor-wrapper">
       <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-      <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" style="display:none;">
+<img
+  id="monitor-on"
+  src="assets/shared/monitor-on.png"
+  alt="Monitor On"
+  hidden
+>
+
       <div id="monitor-screen" class="off">
         <div id="output"></div>
       </div>
@@ -43,16 +49,13 @@
 
 <script>
   const powerBtn = document.getElementById('power-btn');
-const monitorOn = document.getElementById('monitor-on');
+  const monitorOn = document.getElementById('monitor-on');
 
-powerBtn.addEventListener('click', () => {
-  if (monitorOn.style.display === 'none') {
-    monitorOn.style.display = 'block';
-  } else {
-    monitorOn.style.display = 'none';
-  }
-});
+  powerBtn.addEventListener('click', () => {
+    monitorOn.hidden = !monitorOn.hidden;
+  });
 </script>
+
   
   
 </body>
