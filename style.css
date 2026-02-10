@@ -16,9 +16,16 @@ body {
   position: relative;
   width: min(90vw, 1200px);
   aspect-ratio: 2360 / 1640;
-  background: black;
   overflow: hidden;
+
+  background:
+    linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px),
+    black;
+
+  background-size: 5% 5%;
 }
+
 
 /* All children absolute */
 #scene > * {
@@ -128,15 +135,5 @@ body {
   z-index: 9;
 }
 
-#scene::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, rgba(255,255,255,.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px);
-  background-size: 5% 5%;
-  pointer-events: none;
-  z-index: 999;
-}
+
 
