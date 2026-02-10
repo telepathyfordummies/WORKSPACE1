@@ -1,23 +1,21 @@
-/* BODY: center everything */
-html, body {
+
+/* BODY AND SCENE */
+body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: #111; /* matches scene background */
+  background: #000;
   display: flex;
-  justify-content: center;  /* center horizontally */
-  align-items: center;      /* center vertically */
-  overflow: hidden;         /* prevent scrollbars */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* SCENE: fixed size */
 #scene {
-  width: 800px;   /* original scene width */
-  height: 556px;  /* original scene height */
-  position: relative; /* keep absolute children relative to this */
+  position: relative;
+  width: 800px;
+  height: 556px;
+  background: #111;
+  margin: auto;
 }
-
 
 #scene > * {
   position: absolute;
