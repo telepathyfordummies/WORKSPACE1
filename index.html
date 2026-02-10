@@ -41,8 +41,9 @@
 
 <!-- NAMEPLATE -->
 <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
-<img id="nameplate-one" src="assets/ui/nameplate-one.png" alt="Nameplate One">
-<img id="nameplate-other" src="assets/ui/nameplate-other.png" alt="Nameplate Other" class="hidden">
+<!-- Single nameplate image -->
+<img id="nameplate" src="assets/shared/nameplate-one.png" alt="Nameplate" />
+
 
 
   </div></div>
@@ -61,23 +62,19 @@ const nameplateOne = document.getElementById('nameplate-one');
 const nameplateOther = document.getElementById('nameplate-other');
 
 // Start with nameplate-one visible, other hidden
-nameplateOne.classList.remove('hidden');
-nameplateOther.classList.add('hidden');
+const nameplate = document.getElementById('nameplate');
 
-function toggleNameplate(e) {
-  const clicked = e.target;
+// Current state
+let isOne = true;
 
-  // Only toggle if the visible nameplate was clicked
-  if (!clicked.classList.contains('hidden')) {
-    nameplateOne.classList.toggle('hidden');
-    nameplateOther.classList.toggle('hidden');
+nameplate.addEventListener('click', () => {
+  if (isOne) {
+    nameplate.src = 'assets/shared/nameplate-other.png';
+  } else {
+    nameplate.src = 'assets/shared/nameplate-one.png';
   }
-}
-
-// Attach to both images
-nameplateOne.addEventListener('click', toggleNameplate);
-nameplateOther.addEventListener('click', toggleNameplate);
-
+  isOne = !isOne;
+});
 
 </script>
   
