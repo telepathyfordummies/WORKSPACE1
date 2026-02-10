@@ -1,28 +1,39 @@
 /* ----------------------------- */
-/* SCENE CONTAINER */
+/* BODY & SCENE */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+
 #scene {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;                  /* scale to viewport */
+  max-width: 1200px;            /* optional max */
+  aspect-ratio: 2360 / 1640;    /* keep canvas proportions */
+  background: black;
   overflow: hidden;
-  background: #000; /* fallback if background missing */
 }
 
 /* ----------------------------- */
 /* BACKGROUND */
 #wall {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;      /* full viewport width */
+  top: 0%;
+  left: 0%;
+  width: 100%;
   height: auto;
   z-index: 0;
 }
 
 #windows {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   width: 100%;
   height: auto;
   z-index: 1;
@@ -32,10 +43,9 @@
 /* DESK */
 #desk {
   position: absolute;
-  bottom: 0;        /* sit at bottom of viewport */
-  left: 50%;        /* horizontally center */
-  transform: translateX(-50%);
-  width: 70%;       /* scales the desk proportionally */
+  bottom: 0%;      /* relative to canvas */
+  left: 21%;       /* original canvas coordinates -> % */
+  width: 70%;
   height: auto;
   z-index: 2;
 }
@@ -44,10 +54,9 @@
 /* MONITOR */
 #monitor-wrapper {
   position: absolute;
-  bottom: 35%;      /* nudge up from desk */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 28%;       /* monitor width relative to scene */
+  bottom: 24%;    /* relative to canvas */
+  left: 46%;
+  width: 28%;
   height: auto;
   z-index: 5;
 }
@@ -59,7 +68,7 @@
 
 #monitor-screen {
   position: absolute;
-  top: 12%;         /* align inside monitor shell */
+  top: 12%;       /* inside monitor shell */
   left: 12%;
   width: 76%;
   height: 65%;
@@ -68,17 +77,17 @@
 }
 
 #monitor-screen.off {
-  display: none;    /* monitor starts off */
+  display: none;
 }
 
 /* ----------------------------- */
 /* INPUT CONTAINER */
 #input-container {
   position: absolute;
-  bottom: 18%;      /* above desk */
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
-  width: 25%;       /* scale input relative to scene */
+  width: 25%;
   height: auto;
   z-index: 7;
 }
@@ -91,7 +100,7 @@
 #submit-red, #submit-green {
   position: absolute;
   top: 0;
-  right: -60px;     /* sit beside input */
+  right: -60px;
   width: 50px;
   height: auto;
   cursor: pointer;
@@ -105,7 +114,7 @@
 /* POWER BUTTON */
 #power-btn {
   position: absolute;
-  bottom: 50%;      /* adjust as needed */
+  bottom: 50%;
   right: 10%;
   width: 50px;
   height: auto;
@@ -117,7 +126,7 @@
 /* NAMEPLATE */
 #nameplate-base {
   position: absolute;
-  bottom: 65%;      /* above desk/monitor */
+  bottom: 65%;
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
