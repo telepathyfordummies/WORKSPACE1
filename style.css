@@ -58,11 +58,11 @@ body {
 /* Monitor placeholder */
 #monitor-on {
   position: absolute;
-  top: 200px;       /* just for demo */
-  left: 300px;
-  width: 400px;
-  height: 300px;
-  background: lime;  /* visible monitor placeholder */
+  top: -60px;       /* just for demo */
+  left: 0px;
+  width: 2400px;
+  height: 1800px;
+  background: transparent;  /* visible monitor placeholder */
   z-index: 500;      /* behind the button */
 }
 
