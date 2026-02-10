@@ -1,3 +1,10 @@
+#scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* keeps things from spilling out */
+}
+
 
 #desk {
   position: absolute;
