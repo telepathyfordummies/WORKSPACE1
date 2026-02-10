@@ -78,31 +78,34 @@ nameplateOther.addEventListener('click', () => {
   
 <!-- INPUT / OUTPUT SCRIPT -->
   
-  <script>
-const redBtn = document.getElementById('submit-red');
-const greenBtn = document.getElementById('submit-green');
-const input = document.getElementById('real-input');
-const output = document.getElementById('output');
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const redBtn = document.getElementById('submit-red');
+  const greenBtn = document.getElementById('submit-green');
+  const input = document.getElementById('real-input');
+  const output = document.getElementById('output');
 
-redBtn.addEventListener('click', () => {
-  const userText = input.value.trim();
-  if (!userText) return; // do nothing if input is empty
+  // sanity check (temporary)
+  console.log(redBtn, greenBtn, input, output);
 
-  // Flash green button
-  redBtn.classList.add('hidden');
-  greenBtn.classList.remove('hidden');
+  redBtn.addEventListener('click', () => {
+    const userText = input.value.trim();
+    if (!userText) return;
 
-  // Show the "answer" on monitor
-  output.textContent = `You typed: ${userText}`; // Replace with real logic if needed
+    // flash green
+    redBtn.classList.add('hidden');
+    greenBtn.classList.remove('hidden');
 
-  // After 0.5s, switch back to red button
-  setTimeout(() => {
-    greenBtn.classList.add('hidden');
-    redBtn.classList.remove('hidden');
-  }, 500);
+    // show output on monitor
+    output.textContent = `You typed: ${userText}`;
 
-  // Clear input if desired
-  input.value = '';
+    setTimeout(() => {
+      greenBtn.classList.add('hidden');
+      redBtn.classList.remove('hidden');
+    }, 500);
+
+    input.value = '';
+  });
 });
 </script>
 
