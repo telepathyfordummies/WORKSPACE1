@@ -46,6 +46,15 @@ body {
   z-index: 1000;     /* above other elements */
 }
 
+#power-btn {
+  box-shadow: 0 0 5px #000; /* subtle shadow for depth */
+  transition: background-color 0.2s; /* smooth hover effect */
+}
+
+#power-btn:hover {
+  background-color: #7ac8ff;  /* lighter gray on hover */
+}
+
 /* Monitor placeholder */
 #monitor-on {
   position: absolute;
