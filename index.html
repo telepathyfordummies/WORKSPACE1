@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scene Test with Input</title>
+  <title>Scene Test</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,17 +18,20 @@
     <!-- MONITOR -->
     <div id="monitor-wrapper">
       <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-      <div id="monitor-screen"><div id="output"></div></div>
+      <div id="monitor-screen" class="off">
+        <div id="output"></div>
+      </div>
     </div>
 
     <!-- INPUT -->
-    <div id="input-wrapper">
-      <img id="input-container" src="assets/shared/image-container.png" alt="container">
-        <div id="input-bg"></div> <!-- light blue background -->
-        <input type="text" id="user-input" placeholder="Enter text here">
-        <button id="submit-btn">Submit</button>
-      </div>
-    </div>
+<div id="input-container">
+  <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
+  <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
+  <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
+  <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
+</div>
+
+
 
     <!-- POWER BUTTON -->
     <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
