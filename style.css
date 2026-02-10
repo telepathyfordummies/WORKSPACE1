@@ -14,35 +14,77 @@ body {
   background: #111;
 }
 
-#scene > * {
+/* Only images inside the scene get absolute positioning */
+#scene > img {
   position: absolute;
 }
 
+/* WALL & WINDOWS */
+#wall {
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#windows {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
-/* wrapper positions the input below the monitor */
+/* DESK */
+#desk {
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* MONITOR */
+#monitor-wrapper {
+  position: absolute;
+  top: 100px;    /* adjust vertical placement */
+  left: 200px;   /* adjust horizontal placement */
+  z-index: 5;    /* above desk, below input if needed */
+}
+
+/* INPUT container */
 #input-wrapper {
   position: absolute;
   bottom: 30px;        /* distance from bottom of scene */
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;        /* desired input width */
-  height: 80px;        /* desired input height */
-  z-index: 10;
+  width: 400px;        /* container width */
+  height: 80px;        /* container height */
+  z-index: 10;         /* above desk/background */
 }
 
-/* container holds the input images */
 #input-container {
-  position: relative;  /* relative so children are positioned inside it */
+  position: relative;  /* children are positioned relative to this */
   width: 100%;
   height: 100%;
 }
 
-/* images fill the container */
 #input-container img {
-  position: absolute;
+  position: absolute;  /* scale inside container */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: block;
+}
+
+/* POWER BUTTON */
+#power-btn {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 12;
+}
+
+/* NAMEPLATE */
+#nameplate-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
 }
