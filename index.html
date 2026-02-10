@@ -45,21 +45,13 @@
 
   </div></div>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const powerBtn = document.getElementById('power-btn');
-  const monitorOn = document.getElementById('monitor-on');
-
-  powerBtn.addEventListener('click', () => {
-    monitorOn.classList.toggle('hidden');
-  });
+powerBtn.addEventListener('click', () => {
+  console.log('POWER CLICKED');
+  alert('POWER CLICKED');  // just to be sure
 });
+
 </script>
 
-  <script>
-  document.getElementById('power-btn').onclick = () => {
-    alert('POWER CLICKED');
-  };
-</script>
 
   
 </body>
