@@ -19,12 +19,6 @@ body {
 }
 
 
-/* INPUT CONTAINER */
-#input-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
 /* Light blue background replaces input-bar.png */
 #input-bg {
