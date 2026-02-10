@@ -16,92 +16,22 @@ body {
   margin: auto;
 }
 
-/* WALL, WINDOWS, DESK */
-#wall {
+#scene > * {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-#windows {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-#desk {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
 }
 
-/* MONITOR */
-#monitor-wrapper {
-  position: absolute;
-  top: 100px;   /* adjust vertical placement */
-  left: 200px;  /* adjust horizontal placement */
-  z-index: 5;
-}
 
-/* INPUT BAR IMAGE */
-#input-bar-img {
-  position: absolute;
-  bottom: 50px;  /* distance from bottom of scene */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;   /* match original input-bar.png width */
-  height: 50px;   /* match original input-bar.png height */
-  z-index: 10;
-}
-
-/* REAL INPUT */
 #real-input {
   position: absolute;
-  bottom: 50px;       /* same as input-bar-img */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;        /* slightly smaller than background */
-  height: 35px;        /* fits inside input-bar.png */
+  top: 450px;      /* manually match input-bar position */
+  left: 200px;     /* manually match input-bar position */
+  width: 300px;    /* fits nicely inside input-bar */
+  height: 35px;    /* fits nicely inside input-bar */
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   background-color: rgba(173, 216, 230, 0.7); /* light blue overlay */
-  z-index: 11;         /* above input-bar image */
-}
-
-/* SUBMIT BUTTON */
-#submit-btn {
-  position: absolute;
-  bottom: 50px;       /* align with input-bar */
-  left: 50%;
-  transform: translateX(160px); /* position to the right of input */
-  height: 35px;
-  padding: 0 15px;
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 11;        /* above input-bar image */
-}
-
-/* POWER BUTTON */
-#power-btn {
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  z-index: 12;
-}
-
-/* NAMEPLATE */
-#nameplate-base {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6;
+  z-index: 11;     /* above input-bar */
 }
 
