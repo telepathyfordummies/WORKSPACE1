@@ -1,3 +1,13 @@
+#desk, #monitor-wrapper, #input-container, #power-btn, #nameplate-base {
+  width: 100px;   /* small for testing */
+  height: auto;
+  left: 50%;      /* center horizontally */
+  bottom: 50%;    /* center vertically */
+  transform: translate(-50%, 50%); /* adjust for center */
+  z-index: 2;
+}
+
+
 /* ----------------------------- */
 body {
   margin: 0;
