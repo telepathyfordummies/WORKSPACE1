@@ -44,14 +44,15 @@
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
-
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   const powerBtn = document.getElementById('power-btn');
   const monitorOn = document.getElementById('monitor-on');
 
   powerBtn.addEventListener('click', () => {
     monitorOn.classList.toggle('hidden');
   });
+});
 </script>
 
   <script>
