@@ -32,24 +32,29 @@ body {
 }
 
 #desk {
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 2360px; /* same as canvas width */
+  height: auto;
   z-index: 2;
 }
 
 #monitor-wrapper {
-  bottom: 200px;
-  left: 1100px;   /* absolute pixel for testing */
-  width: 650px;   /* scale proportionally */
+  position: absolute;
+  left: 1100px;
+  bottom: 400px;
+  width: 650px;
   z-index: 5;
 }
 
 #nameplate-base {
-  bottom: 1300px;
+  position: absolute;
   left: 1180px;
+  bottom: 1300px;
   width: 150px;
   z-index: 9;
 }
+
 
 
