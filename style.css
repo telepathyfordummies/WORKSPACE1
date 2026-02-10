@@ -35,7 +35,7 @@ body {
 
 #monitor-on {
   z-index: 2;          /* above shell screen area */
-  pointer-events: none; /* clicks pass through */
+/*  pointer-events: none; /* clicks pass through */
 }
 
 .hidden {
@@ -44,7 +44,6 @@ body {
 
 #power-btn {
   position: absolute;
-  pointer-events: auto;
   z-index: 1000;
 }
 
