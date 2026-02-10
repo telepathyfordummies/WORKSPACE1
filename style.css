@@ -1,28 +1,26 @@
-/* Scene wrapper fills viewport */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   background: #111;
-  overflow: hidden; /* remove scrollbars */
+  overflow: hidden;
 }
 
 #scene-wrapper {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scene {
+  width: 800px;  /* original scene width */
+  height: 556px; /* original scene height */
+  transform-origin: top left;
   position: relative;
 }
-
-/* Scene scales proportionally to fit viewport */
-#scene {
-  width: 800px;   /* original scene size */
-  height: 556px;  /* original scene size */
-  transform-origin: top left; /* scale from top-left corner */
-  position: absolute;
-}
-
-/* JavaScript will scale it dynamically */
 
 
 
