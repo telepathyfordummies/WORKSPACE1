@@ -32,8 +32,8 @@
   <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
   <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
   <input type="text" id="real-input" placeholder="Enter text">
-  <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
-  <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
+ <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
+<img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green" class="hidden">
 
     <!-- POWER BUTTON -->
 <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
@@ -70,6 +70,35 @@ nameplateOther.addEventListener('click', () => {
   nameplateOne.classList.remove('hidden');
 });
 </script>
+
+  <script>
+const redBtn = document.getElementById('submit-red');
+const greenBtn = document.getElementById('submit-green');
+const input = document.getElementById('real-input');
+const output = document.getElementById('output');
+
+redBtn.addEventListener('click', () => {
+  const userText = input.value.trim();
+  if (!userText) return; // do nothing if input is empty
+
+  // Flash green button
+  redBtn.classList.add('hidden');
+  greenBtn.classList.remove('hidden');
+
+  // Show the "answer" on monitor
+  output.textContent = `You typed: ${userText}`; // Replace with real logic if needed
+
+  // After 0.5s, switch back to red button
+  setTimeout(() => {
+    greenBtn.classList.add('hidden');
+    redBtn.classList.remove('hidden');
+  }, 500);
+
+  // Clear input if desired
+  input.value = '';
+});
+</script>
+
   
 </body>
 </html>
