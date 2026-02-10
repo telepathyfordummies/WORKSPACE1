@@ -6,17 +6,19 @@
   margin: auto;
 }
 
-/* only absolute the elements that need it */
-#wall, #windows, #desk {
+/* Only absolute the elements that truly need it */
+#wall, #windows {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 0;
 }
-#desk { bottom: 0; z-index:2; }
-#windows { z-index:1; }
-#wall { z-index:0; }
-
-/* monitor wrapper */
+#desk {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
 #monitor-wrapper {
   position: absolute;
   top: 100px;
@@ -24,7 +26,7 @@
   z-index: 5;
 }
 
-/* input wrapper */
+/* Input container */
 #input-wrapper {
   position: absolute;
   bottom: 50px;
@@ -34,14 +36,11 @@
   height: 80px;
   z-index: 10;
 }
-
-/* input container */
 #input-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 #input-container img {
   position: absolute;
   top: 0;
