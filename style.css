@@ -40,16 +40,21 @@ body {
 #monitor-wrapper {
   width: 500px;   /* whatever the monitor PNG width is */
   height: 350px;  /* whatever the monitor PNG height is */
-  top: 400px;     /* position on the screen */
-  left: 800px;    /* position on the screen */
+  top: 0px;     /* position on the screen */
+  left: 0px;    /* position on the screen */
   position: absolute;
   z-index: 5;     /* behind power button */
 }
 
-
 #monitor-screen {
-  pointer-events: none;
+  width: 400px;   /* screen display area */
+  height: 250px;  /* screen display area */
+  top: 50px;      /* inside monitor wrapper */
+  left: 50px;     /* inside monitor wrapper */
+  position: absolute;
+  pointer-events: none;  /* prevent it from blocking clicks */
 }
+
 
 
 #monitor-on {
