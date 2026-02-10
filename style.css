@@ -5,19 +5,8 @@
   overflow: hidden;
 }
 
-
-
-#desk {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  z-index: 1; /* base layer */
-}
-
-#world-background { 
-  /* add background later */
+/* BACKGROUND */
+#wall {
   position: absolute;
   top: 0;
   left: 0;
@@ -25,47 +14,40 @@
   z-index: 0;
 }
 
-#monitor-wrapper {
-  position: absolute;  /* must be absolute */
-  bottom: 30%;         /* distance from bottom of scene */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40%;          /* scale the monitor shell */
-  height: auto;
-  z-index: 5;
-}
-
-#input-container {
+#windows {
   position: absolute;
-  bottom: 15%;         /* adjust so input is above desk */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* DESK */
+#desk {
+  position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;        /* width of input bar */
-  height: auto;
-  z-index: 7;
+  width: 80%;
+  z-index: 2;
 }
 
-
-#monitor-screen {
-  z-index: 6; /* screen overlay above monitor shell */
-}
-
-
-#power-btn {
-  z-index: 8; /* always clickable on top */
-}
-
-#nameplate-base {
-  z-index: 9; /* always on top visually */
+/* MONITOR */
+#monitor-wrapper {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  z-index: 5;
 }
 
 #monitor-shell {
   width: 100%;
-  height: auto;   /* prevents forcing stack */
 }
 
 #monitor-screen {
-  position: absolute; /* sits on top of monitor-shell */
+  position: absolute;
   top: 10%;
   left: 10%;
   width: 80%;
@@ -74,15 +56,54 @@
   z-index: 6;
 }
 
+#monitor-screen.off {
+  display: none;
+}
+
+/* INPUT CONTAINER */
+#input-container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 7;
+  width: 300px;
+}
+
 #input-bar {
   width: 100%;
-  height: auto;
 }
 
 #submit-red, #submit-green {
   position: absolute;
   top: 0;
-  right: -60px; /* sit beside input */
+  right: -60px;
   width: 50px;
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+}
+
+/* POWER BUTTON */
+#power-btn {
+  position: absolute;
+  bottom: 50%;
+  right: 10%;
+  width: 50px;
+  z-index: 8;
+  cursor: pointer;
+}
+
+/* NAMEPLATE */
+#nameplate-base {
+  position: absolute;
+  bottom: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  z-index: 9;
+}
+
+
