@@ -6,22 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- POWER BUTTON OUTSIDE SCENE -->
-<div id="power-btn">
-  <img src="assets/shared/power-button.png" alt="Power Button" />
-</div>
-
-<div id="monitor-on" class="hidden"></div>
-
-<div id="scene">
-  <!-- all your other scene elements -->
-</div>
-
-  
   <div id="scene-wrapper">
   <div id="scene">
-  
 
     <!-- BACKGROUND -->
     <img id="wall" src="assets/shared/wall.png" alt="Wall">
@@ -31,17 +17,17 @@
     <img id="desk" src="assets/shared/desk.png" alt="Desk">
 
     <!-- MONITOR -->
-   <div id="monitor-wrapper">
-  <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+    <div id="monitor-wrapper">
+      <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+      <div id="monitor-screen" class="off">
+        <div id="output"></div>
+      </div>
+    </div>
 
-  <img
-    id="monitor-on"
-    src="assets/shared/monitor-on.png"
-    alt="Monitor On"
-    class="hidden"
-  >
+     <!-- MONITOR PLACEHOLDER -->
+  <div id="monitor-on" class="hidden"></div>
 </div>
-
+    
     <!-- INPUT -->
 
   <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
@@ -51,22 +37,23 @@
   <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
 
 
+
+
+    <!-- POWER BUTTON -->
+    <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
+
     <!-- NAMEPLATE -->
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
-
- 
-
 <script>
+  const powerBtn = document.getElementById('power-btn');
+const monitorOn = document.getElementById('monitor-on');
+
 powerBtn.addEventListener('click', () => {
-  console.log('POWER CLICKED');
-  alert('POWER CLICKED');  // just to be sure
+  monitorOn.classList.toggle('hidden');
+  console.log('Power button clicked!');
 });
-
 </script>
-
-
-  
 </body>
 </html>
