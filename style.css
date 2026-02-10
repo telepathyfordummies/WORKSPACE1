@@ -77,4 +77,6 @@ body {
   left: 1100px;
   width: auto;   /* original image width */
   height: auto;  /* original image height */
+   z-index: 200;  /* above background, below buttons */
+  cursor: pointer;
 }
