@@ -20,11 +20,11 @@ body {
 
 #real-input {
   position: absolute;
-  top: 480px;       /* manually adjust to match input-bar vertical position */
-  left: 220px;      /* manually adjust to match input-bar horizontal position */
-  width: 300px;     /* match input-bar width */
-  height: 35px;     /* match input-bar height */
-  transform: rotate(-30deg);   /* match input-bar angle */
+  top: 1319px;       /* manually adjust to match input-bar vertical position */
+  left: 460px;      /* manually adjust to match input-bar horizontal position */
+  width: 355px;     /* match input-bar width */
+  height: 45px;     /* match input-bar height */
+  transform: rotate(-11deg);   /* match input-bar angle */
   transform-origin: top left;  /* rotate around top-left corner */
   border: none;
   background-color: rgba(173,216,230,0.4);  /* semi-transparent for alignment */
