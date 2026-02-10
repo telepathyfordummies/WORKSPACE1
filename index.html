@@ -16,31 +16,31 @@
     <!-- DESK -->
     <img id="desk" src="assets/shared/desk.png" alt="Desk">
 
-        <!-- NAMEPLATE -->
-    <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
+    <!-- MONITOR -->
+    <div id="monitor-wrapper">
+      <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+      <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" style="display:none;">
+      <div id="monitor-screen" class="off">
+        <div id="output"></div>
+      </div>
+    </div>
 
+    <!-- INPUT -->
 
-      <!-- MONITOR -->
-  <!-- MONITOR -->
-<img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-<img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" style="display:none;">
-
+  <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
+  <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
+  <input type="text" id="real-input" placeholder="Enter text">
+  <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
+  <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
 
   <!-- POWER BUTTON -->
   <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
 
-</div>
-
-
-<!-- INPUT -->
-
-  <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
-  <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
-<input type="text" id="real-input" placeholder="Enter text">
-  <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
-  <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
+    <!-- NAMEPLATE -->
+    <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
+
 <script>
   const powerBtn = document.getElementById('power-btn');
 const monitorOn = document.getElementById('monitor-on');
@@ -53,6 +53,7 @@ powerBtn.addEventListener('click', () => {
   }
 });
 </script>
+  
   
 </body>
 </html>
