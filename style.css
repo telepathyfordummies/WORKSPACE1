@@ -19,7 +19,7 @@ body {
 }
 
 #input-container {
-  position: absolute;
+ position: relative; 
   width: 400px;          /* explicit width of container */
   height: 80px;          /* explicit height of container */
   bottom: 30px;          /* distance from bottom of scene */
