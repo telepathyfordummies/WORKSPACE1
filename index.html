@@ -18,9 +18,10 @@
 
     <!-- MONITOR -->
     <div id="monitor-wrapper">
-      <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-      <div id="monitor-screen" class="off">
-        <div id="output"></div>
+     <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+  <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" style="display: none;">
+  <div id="monitor-screen" class="off">
+    <div id="output"></div>
       </div>
     </div>
 
@@ -42,7 +43,18 @@
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
+<script>
+  const powerBtn = document.getElementById('power-btn');
+const monitorOn = document.getElementById('monitor-on');
 
+powerBtn.addEventListener('click', () => {
+  if (monitorOn.style.display === 'none') {
+    monitorOn.style.display = 'block';
+  } else {
+    monitorOn.style.display = 'none';
+  }
+});
+</script>
   
 </body>
 </html>
