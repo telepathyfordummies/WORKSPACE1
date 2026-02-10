@@ -41,8 +41,9 @@
 
 <!-- NAMEPLATE -->
 <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
+<!-- Only one is visible to start -->
 <img id="nameplate-one" src="assets/shared/nameplate-one.png" alt="Nameplate One">
-<img id="nameplate-other" src="assets/shared/nameplate-other.png" alt="Nameplate Other">
+<img id="nameplate-other" src="assets/shared/nameplate-other.png" alt="Nameplate Other" class="hidden">
 
 </div>
 
@@ -61,17 +62,18 @@ powerBtn.addEventListener('click', () => {
 </script>
 <!-- NAMEPLATE SCRIPT -->
   <script>
-const wrapper = document.getElementById('nameplate-wrapper');
-const nameplate = document.getElementById('nameplate');
-let isOne = true;
+const nameplateOne = document.getElementById('nameplate-one');
+const nameplateOther = document.getElementById('nameplate-other');
 
-wrapper.addEventListener('click', () => {
-  nameplate.src = isOne
-    ? 'assets/shared/nameplate-other.png'
-    : 'assets/shared/nameplate-one.png';
-  isOne = !isOne;
+nameplateOne.addEventListener('click', () => {
+  nameplateOne.classList.add('hidden');
+  nameplateOther.classList.remove('hidden');
 });
 
+nameplateOther.addEventListener('click', () => {
+  nameplateOther.classList.add('hidden');
+  nameplateOne.classList.remove('hidden');
+});
 </script>
   
 <!-- INPUT / OUTPUT SCRIPT -->
