@@ -19,6 +19,7 @@
     <!-- MONITOR -->
     <div id="monitor-wrapper">
       <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+       <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" class="hidden">
       <div id="monitor-screen" class="off">
         <div id="output"></div>
       </div>
@@ -41,13 +42,13 @@
 
   </div></div>
 <script>
-  const powerBtn = document.getElementById('power-btn');
+ const powerBtn = document.getElementById('power-btn');
+const monitorOn = document.getElementById('monitor-on');
 
 powerBtn.addEventListener('click', () => {
   console.log('Power button clicked!');
-  alert('Power button clicked!'); // for visual confirmation
+  monitorOn.classList.toggle('hidden'); // show/hide monitor-on.png
 });
-
 </script>
   
 </body>
