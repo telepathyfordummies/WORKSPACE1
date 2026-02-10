@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="scene-wrapper">
   <div id="scene">
 
     <!-- BACKGROUND -->
@@ -40,6 +41,20 @@
     <!-- NAMEPLATE -->
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
-  </div>
+  </div></div>
+
+  <script>
+function scaleScene() {
+  const scene = document.getElementById('scene');
+  const scaleX = window.innerWidth / 800;   // scene original width
+  const scaleY = window.innerHeight / 556;  // scene original height
+  const scale = Math.min(scaleX, scaleY);   // maintain aspect ratio
+  scene.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('resize', scaleScene);
+window.addEventListener('load', scaleScene);
+</script>
+  
 </body>
 </html>
