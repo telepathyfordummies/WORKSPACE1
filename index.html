@@ -24,10 +24,6 @@
       </div>
     </div>
     
- <!-- Monitor placeholder -->
-  <div id="monitor-on" class="hidden"></div>
-</div>
-    
     <!-- INPUT -->
 
   <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
@@ -36,17 +32,22 @@
   <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
   <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
 
-
-
-
     <!-- POWER BUTTON -->
-    <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
+   <div id="power-btn"></div>
 
     <!-- NAMEPLATE -->
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
+<script>
+  const powerBtn = document.getElementById('power-btn');
 
+powerBtn.addEventListener('click', () => {
+  console.log('Power button clicked!');
+  alert('Power button clicked!'); // for visual confirmation
+});
+
+</script>
   
 </body>
 </html>
