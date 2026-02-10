@@ -1,3 +1,19 @@
 body {
-  background: hotpink !important;
+  margin: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#scene {
+  position: relative;
+  width: 800px;
+  height: 556px;
+  background: #111;
+}
+
+#scene > * {
+  position: absolute;
 }
