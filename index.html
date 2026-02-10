@@ -3,34 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Test Scene</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  #scene {
-    position: relative;
-    width: 800px;      /* fixed width for test */
-    height: 554px;     /* maintain 2360x1640 aspect ratio: 1640/2360*800 */
-    background: gray;  /* temporary debug */
-    overflow: hidden;
-    border: 2px solid red;  /* debug border */
-  }
-
-  #wall {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
 </head>
 <body>
 
@@ -50,21 +22,7 @@
     </div>
   </div>
 
-  <!-- INPUT -->
-  <div id="input-container">
-    <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
-    <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
-    <img id="submit-green" src="assets/shared/button-green.png" class="hidden" alt="Submit Button Green">
-  </div>
-
-  <!-- POWER BUTTON -->
-  <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
-
-  <!-- NAMEPLATE -->
-  <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
-</div>
-
-<img id="wall" src="assets/shared/wall.png" alt="Wall">
+ 
 </div>
 
 </body>
