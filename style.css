@@ -67,8 +67,12 @@ body {
 }
 
 #power-btn {
-  display: block;
-  width: fit-content;
-  height: fit-content;
+  position: absolute;
+  width: 50px;   /* exact PNG size */
+  height: 50px;  /* exact PNG size */
+  top: 650px;    /* match visual position */
+  left: 950px;   /* match visual position */
+  z-index: 100;  /* above all overlays */
+  cursor: pointer;
 }
 
