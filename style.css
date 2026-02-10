@@ -14,9 +14,10 @@ body {
   background: #111;
 }
 
-#scene > * {
+#scene > img {
   position: absolute;
 }
+
 
 /* Container below monitor */
 #input-container {
