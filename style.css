@@ -33,3 +33,14 @@ body {
   z-index: 11;      /* sits above input-bar image */
   color: black;
 }
+
+/* POWER BUTTON */
+#power-btn {
+  position: absolute;
+  top: 420px;    /* example placement */
+  left: 500px;   /* example placement */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 2;
+}
