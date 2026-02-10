@@ -42,7 +42,10 @@
 <!-- NAMEPLATE -->
 <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 <!-- Single nameplate image -->
-<img id="nameplate" src="assets/ui/nameplate-one.png" alt="Nameplate" />
+<div id="nameplate-wrapper" style="position:absolute; top:1200px; left:500px; width:200px; height:80px; cursor:pointer;">
+  <img id="nameplate" src="assets/ui/nameplate-one.png" alt="Nameplate" style="width:100%; height:100%;">
+</div>
+
 
 
 
@@ -58,21 +61,14 @@ powerBtn.addEventListener('click', () => {
 </script>
 <!-- NAMEPLATE SCRIPT -->
   <script>
-const nameplateOne = document.getElementById('nameplate-one');
-const nameplateOther = document.getElementById('nameplate-other');
-
-// Start with nameplate-one visible, other hidden
+const wrapper = document.getElementById('nameplate-wrapper');
 const nameplate = document.getElementById('nameplate');
-
-// Current state
 let isOne = true;
 
-nameplate.addEventListener('click', () => {
-  if (isOne) {
-    nameplate.src = 'assets/ui/nameplate-other.png';
-  } else {
-    nameplate.src = 'assets/ui/nameplate-one.png';
-  }
+wrapper.addEventListener('click', () => {
+  nameplate.src = isOne
+    ? 'assets/ui/nameplate-other.png'
+    : 'assets/ui/nameplate-one.png';
   isOne = !isOne;
 });
 
