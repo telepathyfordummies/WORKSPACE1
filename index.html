@@ -43,14 +43,22 @@
 
   </div></div>
 
-  <script>
+ <script>
 function scaleScene() {
   const scene = document.getElementById('scene');
-  const scaleX = window.innerWidth / 800;   // scene original width
-  const scaleY = window.innerHeight / 556;  // scene original height
-  const scale = Math.min(scaleX, scaleY);   // maintain aspect ratio
+  const wrapper = document.getElementById('scene-wrapper');
+  
+  const scaleX = wrapper.clientWidth / 800;
+  const scaleY = wrapper.clientHeight / 556;
+  const scale = Math.min(scaleX, scaleY); // ensures scene fits entirely
+
   scene.style.transform = `scale(${scale})`;
 }
+
+window.addEventListener('resize', scaleScene);
+window.addEventListener('load', scaleScene);
+</script>
+
 
 window.addEventListener('resize', scaleScene);
 window.addEventListener('load', scaleScene);
