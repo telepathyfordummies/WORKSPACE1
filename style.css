@@ -20,19 +20,19 @@ body {
 
 #input-container {
   position: absolute;
-  width: 400px;       /* desired input width */
-  height: 80px;       /* desired input height */
-  bottom: 30px;       /* distance from bottom of scene */
+  width: 400px;          /* explicit width of container */
+  height: 80px;          /* explicit height of container */
+  bottom: 30px;          /* distance from bottom of scene */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;        /* above desk/background */
-  background: rgba(255,0,0,0.2); /* temporary to see container */
+  z-index: 10;           /* above desk/background */
 }
 
 #input-container img {
-  position: absolute;
+  position: absolute;    /* relative to container */
   top: 0;
   left: 0;
-  width: auto;        /* temporarily remove 100% scaling */
-  height: 100%;       /* keep height to fill container vertically */
+  width: 100%;           /* scale to fill container */
+  height: 100%;          /* scale to fill container */
+  display: block;
 }
