@@ -18,27 +18,3 @@ body {
   position: absolute;
 }
 
-#monitor-wrapper {
-  z-index: 3;
-}
-
-/* Input container styling */
-#input-container {
-  position: absolute;
-  bottom: 40px;          /* adjust so it sits just below monitor */
-  left: 50%;             /* center horizontally */
-  transform: translateX(-50%);
-  width: 400px;          /* adjust to match input bar image width */
-  height: 80px;          /* adjust to match input bar image height */
-  z-index: 4;            /* above desk/background but below monitor if needed */
-}
-
-/* Make all images inside the container scale to fit */
-#input-container img {
-  position: absolute;    /* relative to container */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
