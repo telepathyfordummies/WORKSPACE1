@@ -55,22 +55,28 @@ powerBtn.addEventListener('click', () => {
   monitorOn.classList.toggle('hidden'); // show/hide monitor-on.png
 });
 </script>
-
-  <script>const nameplateOne = document.getElementById('nameplate-one');
+<!-- NAMEPLATE SCRIPT -->
+  <script>
+    const nameplateOne = document.getElementById('nameplate-one');
 const nameplateOther = document.getElementById('nameplate-other');
 
-// Start with nameplateOne visible, nameplateOther hidden
-nameplateOne.addEventListener('click', () => {
-  nameplateOne.classList.add('hidden');
-  nameplateOther.classList.remove('hidden');
+// Initially show nameplate-one, hide nameplate-other
+nameplateOne.classList.remove('hidden');
+nameplateOther.classList.add('hidden');
+
+// Toggle only when the actual image is clicked
+[nameplateOne, nameplateOther].forEach(img => {
+  img.addEventListener('click', event => {
+    event.stopPropagation(); // prevent bubbling to parent elements
+    nameplateOne.classList.toggle('hidden');
+    nameplateOther.classList.toggle('hidden');
+  });
 });
 
-nameplateOther.addEventListener('click', () => {
-  nameplateOther.classList.add('hidden');
-  nameplateOne.classList.remove('hidden');
-});
 </script>
-
+  
+<!-- INPUT / OUTPUT SCRIPT -->
+  
   <script>
 const redBtn = document.getElementById('submit-red');
 const greenBtn = document.getElementById('submit-green');
