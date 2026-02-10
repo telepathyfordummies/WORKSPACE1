@@ -57,28 +57,29 @@ body {
 
 
 
-#monitor-on {
-  z-index: 2;          /* above shell screen area */
-/*  pointer-events: none; /* clicks pass through */
-}
-
-.hidden {
-  display: none;
-}
-
 #power-btn {
-  position: absolute;
-  width: 50px;   /* exact PNG size */
-  height: 50px;  /* exact PNG size */
-  top: 650px;    /* match visual position */
-  left: 950px;   /* match visual position */
-  z-index: 100;  /* above all overlays */
+  position: fixed;   /* floats above scene */
+  top: 600px;        /* adjust to match scene visually */
+  left: 900px;       /* adjust */
+  width: 50px;
+  height: 50px;
+  z-index: 9999;     /* ensures it’s above everything */
   cursor: pointer;
 }
 
 #power-btn img {
-  pointer-events: none;  /* clicks go to the parent div */
-  display: block;         /* ensure it fills the div */
   width: 100%;
   height: 100%;
+  pointer-events: none;  /* clicks go to div */
+}
+
+#monitor-on {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;       /* behind button */
+}
+
+.hidden {
+  display: none;
 }
