@@ -1,3 +1,12 @@
+#desk, #monitor-wrapper, #input-container, #power-btn, #nameplate-base {
+  width: 200px;          /* temporary test size */
+  height: auto;
+  left: 50%;             /* center horizontally */
+  bottom: 50%;           /* center vertically */
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
 
 /* Body & scene */
 body {
@@ -12,12 +21,15 @@ body {
 
 #scene {
   position: relative;
-  width: 90vw;                  /* scale to viewport */
-  max-width: 1200px;
-  aspect-ratio: 2360 / 1640;    /* keeps original canvas proportions */
+  width: 1200px;         /* fixed width for now */
+  height: 836px;         /* 1640/2360 * 1200 */
+  margin: 0 auto;
   background: black;
-  overflow: hidden;
+  overflow: visible;
+  border: 2px solid red; /* for debugging */
 }
+
+
 
 /* Make everything inside fill container proportionally */
 #scene img,
