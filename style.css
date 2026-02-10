@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   background: #000;
@@ -12,12 +13,8 @@ body {
 }
 
 
-#scene > *:not(#power-btn) {
+#scene > * {
   position: absolute;
-}
-
-#scene * {
-  outline: 1px solid rgba(0,255,0,0.2);
 }
 
 
@@ -37,48 +34,26 @@ body {
   color: black;
 }
 
-#monitor-wrapper {
-  width: 500px;   /* whatever the monitor PNG width is */
-  height: 350px;  /* whatever the monitor PNG height is */
-  top: 0px;     /* position on the screen */
-  left: 0px;    /* position on the screen */
-  position: absolute;
-  z-index: 5;     /* behind power button */
-}
-
-#monitor-screen {
-  width: 400px;   /* screen display area */
-  height: 250px;  /* screen display area */
-  top: 50px;      /* inside monitor wrapper */
-  left: 50px;     /* inside monitor wrapper */
-  position: absolute;
-  pointer-events: none;  /* prevent it from blocking clicks */
-}
-
-
-
 #power-btn {
-  position: absolute;   /* now free to behave normally */
-  top: 650px;
+  position: absolute;
+  top: 650px;        /* adjust to where button should be */
   left: 950px;
   width: 50px;
   height: 50px;
-  z-index: 1000;       /* above other scene elements */
+  background: red;   /* solid color to see it */
   cursor: pointer;
+  z-index: 1000;     /* above other elements */
 }
 
-#power-btn img {
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-
+/* Monitor placeholder */
 #monitor-on {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;       /* behind button */
+  top: 200px;       /* just for demo */
+  left: 300px;
+  width: 400px;
+  height: 300px;
+  background: lime;  /* visible monitor placeholder */
+  z-index: 500;      /* behind the button */
 }
 
 .hidden {
