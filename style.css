@@ -18,17 +18,21 @@ body {
   position: absolute;
 }
 
+#monitor-wrapper {
+  z-index: 3;
+}
 
 #input-container {
   position: absolute;
-  bottom: 20px;          /* distance from bottom of scene */
-  left: 50%;             /* center horizontally */
+  bottom: 20px;
+  left: 50%;
   transform: translateX(-50%);
-  width: 300px;          /* adjust to match input image width */
-  height: 60px;          /* adjust to match input image height */
-  border: 2px solid red; /* temporary debug so we can see it */
-  z-index: 5;            /* make sure it’s above monitor shell */
+  width: 300px;      /* match your input image width */
+  height: 60px;      /* match your input image height */
+  z-index: 5;        /* make it sit above monitor shell for now */
+  border: 2px solid red; /* temporary so you can see it */
 }
+
 
 /* Make all images inside fill the container */
 #input-container img {
