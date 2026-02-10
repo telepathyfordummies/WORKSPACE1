@@ -81,13 +81,25 @@ body {
   cursor: pointer;
 }
 
-#submit-red,
+
+
+ #submit-red,
 #submit-green {
   position: absolute;
-  top: 1275px;     /* adjust to match your input bar */
-  left: 620px;     /* adjust horizontally */
-  width: 290px;     /* cropped PNG width */
-  height: 165px;    /* cropped PNG height */
-  z-index: 300;    /* above input bar, below power button */
+  top: 1275px;
+  left: 620px;
+  z-index: 300;
   cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#submit-red {
+  width: 290px;
+  height: 165px;
+}
+
+#submit-green {
+  width: 280px;
+  height: 160px
 }
