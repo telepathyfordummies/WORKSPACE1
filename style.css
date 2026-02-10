@@ -16,12 +16,11 @@ html, body {
 }
 
 #scene {
-  width: 800px;  /* original scene width */
-  height: 556px; /* original scene height */
-  transform-origin: top left;
+  width: 800px;
+  height: 556px;
   position: relative;
+  transform-origin: top left;
 }
-
 
 
 #scene > * {
