@@ -23,8 +23,8 @@ body {
   bottom: 30px;                 /* distance from bottom of scene */
   left: 50%;                    /* horizontal center */
   transform: translateX(-50%);  /* center properly */
-  width: 400px;                  /* set to match input-bar.png width */
-  height: 80px;                  /* set to match input-bar.png height */
+  width: 363px;                  /* set to match input-bar.png width */
+  height: 1300px;                  /* set to match input-bar.png height */
   z-index: 10;  
     border: 2px solid red;
 }
