@@ -1,3 +1,32 @@
+#scene > * {
+  position: absolute;
+}
+
+#wall, #windows {
+  z-index: 0;
+}
+
+#desk {
+  z-index: 2;
+}
+
+#monitor-wrapper {
+  z-index: 5;
+}
+
+#input-container {
+  z-index: 7;
+}
+
+#power-btn {
+  z-index: 8;
+}
+
+#nameplate-base {
+  z-index: 9;
+}
+
+
 #desk, #monitor-wrapper, #input-container, #power-btn, #nameplate-base {
   width: 200px;          /* temporary test size */
   height: auto;
@@ -49,23 +78,9 @@ body {
   z-index: 0;
 }
 
-/* Desk */
-#desk {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 2;
-}
+
 
 /* Monitor */
-#monitor-wrapper {
-  bottom: 30%;    /* relative to container */
-  left: 45%;
-  width: 28%;
-  transform: translateX(-50%);
-  z-index: 5;
-}
 
 #monitor-shell {
   width: 100%;
@@ -122,11 +137,21 @@ body {
   cursor: pointer;
 }
 
-/* Nameplate */
+#desk {
+  bottom: 0;        /* desk touches bottom */
+  left: 0;          /* aligned left */
+  width: 100%;      /* spans full width */
+}
+
+#monitor-wrapper {
+  bottom: 250px;    /* floats on desk */
+  left: 45%;
+  width: 28%;
+  transform: translateX(-50%);
+}
+
 #nameplate-base {
-  bottom: 70%;
+  bottom: 650px;    /* floats above monitor */
   left: 50%;
   transform: translateX(-50%);
-  width: 150px;
-  z-index: 9;
 }
