@@ -12,7 +12,7 @@ body {
 }
 
 
-#scene > * {
+#scene > *:not(#power-btn) {
   position: absolute;
 }
 
