@@ -12,43 +12,35 @@ body {
 
 #scene {
   position: relative;
-  width: 95vw;                  /* fills most of the viewport */
-  max-width: 1600px;            /* optional cap */
-  aspect-ratio: 2360 / 1640;    /* keeps original canvas proportions */
-  background: black;
+  width: 1200px;              /* fixed width for now */
+  height: calc(1200 * 1640 / 2360px);  /* keeps aspect ratio */
+  margin: 0 auto;
+  background: black;           /* ensures you can see container */
   overflow: hidden;
+  border: 1px solid red;       /* temporary debug border */
 }
+
 
 /* ----------------------------- */
 /* BACKGROUND */
-#wall {
+#wall, #windows {
   position: absolute;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: auto;
   z-index: 0;
 }
 
-#windows {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
-
-/* ----------------------------- */
-/* DESK */
 #desk {
   position: absolute;
-  left: 0%;       /* aligned with left wall */
-  bottom: 0%;     /* touches bottom of canvas */
-  width: 100%;    /* fills horizontal space proportionally */
+  left: 0;
+  bottom: 0;
+  width: 100%;
   height: auto;
   z-index: 2;
 }
+
 
 /* ----------------------------- */
 /* MONITOR */
