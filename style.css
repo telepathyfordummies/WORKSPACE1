@@ -1,4 +1,5 @@
-/* ----------------------------- */
+/* ============================= */
+/* Page setup */
 body {
   margin: 0;
   padding: 0;
@@ -9,47 +10,48 @@ body {
   height: 100vh;
 }
 
+/* ============================= */
 /* Scene container */
 #scene {
   position: relative;
-  width: 1200px;               /* fixed container width */
-  height: 836px;               /* 1640 / 2360 ratio */
+  width: min(90vw, 1200px);
+  aspect-ratio: 2360 / 1640;
   background: black;
   overflow: hidden;
-  border: 2px solid red;       /* debug border */
 }
 
-/* Force all children absolute */
+/* Force absolute positioning */
 #scene > * {
   position: absolute;
+  box-sizing: border-box;
 }
 
-/* ----------------------------- */
+/* ============================= */
 /* Background */
-#wall, #windows {
-  top: 0;
-  left: 0;
+#wall,
+#windows {
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
 }
 
+/* ============================= */
 /* Desk */
 #desk {
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  left: -1%;
+  bottom: -2%;
+  width: 102%;
   height: auto;
   z-index: 2;
 }
 
-/* ----------------------------- */
-/* Monitor wrapper */
+/* ============================= */
+/* Monitor */
 #monitor-wrapper {
-  bottom: 270px;       /* adjusted to sit on desk */
-  left: 45%;           /* center roughly */
-  width: 28%;          /* scales monitor shell */
-  transform: translateX(-50%);
+  left: 36%;
+  bottom: 30%;
+  width: 28%;
   z-index: 5;
 }
 
@@ -60,10 +62,7 @@ body {
 
 #monitor-screen {
   position: absolute;
-  top: 12%;            /* fits inside monitor shell */
-  left: 12%;
-  width: 76%;
-  height: 65%;
+  inset: 12% 12% 23% 12%;
   background: black;
   z-index: 6;
 }
@@ -72,12 +71,11 @@ body {
   display: none;
 }
 
-/* ----------------------------- */
-/* Input container */
+/* ============================= */
+/* Input bar */
 #input-container {
-  bottom: 180px;       /* sits below monitor */
-  left: 50%;
-  transform: translateX(-50%);
+  left: 38%;
+  bottom: 22%;
   width: 25%;
   z-index: 7;
 }
@@ -87,12 +85,14 @@ body {
   height: auto;
 }
 
-#submit-red, #submit-green {
+#submit-red,
+#submit-green {
   position: absolute;
-  top: 0;
-  right: -60px;        /* right of input bar */
-  width: 50px;
+  top: 50%;
+  right: -18%;
+  width: 16%;
   height: auto;
+  transform: translateY(-50%);
   cursor: pointer;
 }
 
@@ -100,23 +100,23 @@ body {
   display: none;
 }
 
-/* ----------------------------- */
+/* ============================= */
 /* Power button */
 #power-btn {
-  bottom: 450px;       /* above desk, near monitor */
-  right: 10%;
-  width: 50px;
+  right: 7%;
+  bottom: 52%;
+  width: 4%;
   height: auto;
   z-index: 8;
   cursor: pointer;
 }
 
-/* ----------------------------- */
+/* ============================= */
 /* Nameplate */
 #nameplate-base {
-  bottom: 650px;       /* floats above monitor */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
+  left: 44%;
+  bottom: 65%;
+  width: 12%;
+  height: auto;
   z-index: 9;
 }
