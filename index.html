@@ -37,13 +37,17 @@
   <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green">
 
 
-<!-- POWER BUTTON -->
-  <img src="assets/shared/power-button.png" alt="Power Button" />
-
     <!-- NAMEPLATE -->
     <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 
   </div></div>
+
+  <!-- place this just before </body> -->
+<div id="power-btn">
+  <img src="assets/shared/power-button.png" alt="Power Button" />
+</div>
+<div id="monitor-on" class="hidden"></div>
+
 <script>
 powerBtn.addEventListener('click', () => {
   console.log('POWER CLICKED');
