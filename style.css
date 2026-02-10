@@ -14,7 +14,7 @@ body {
   background: #111;
 }
 
-#scene > img {
+#scene > * {
   position: absolute;
 }
 
