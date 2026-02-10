@@ -34,3 +34,12 @@ body {
   color: black;
 }
 
+#monitor-shell {
+  z-index: 5;
+}
+
+#monitor-on {
+  z-index: 6; /* sits on top of the monitor */
+  pointer-events: none;
+}
+
