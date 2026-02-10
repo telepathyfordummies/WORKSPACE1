@@ -19,13 +19,14 @@ body {
 }
 
 #input-container {
-  position: absolute;           /* absolute relative to #scene */
-  bottom: 30px;                 /* distance from bottom of scene */
-  left: 50%;                    /* horizontal center */
-  transform: translateX(-50%);  /* center properly */
-  width: 363px;                  /* set to match input-bar.png width */
-  height: 1300px;                  /* set to match input-bar.png height */
-  z-index: 10;  
+  position: absolute;
+  bottom: 30px;          /* distance from bottom of scene */
+  left: 50%;             /* center horizontally */
+  transform: translateX(-50%);
+  width: 363px;          /* pick the desired width for your input bar + buttons */
+  height: 100px;          /* pick the desired height */
+  z-index: 10;           /* above desk/background */
+  background: transparent; /* optional for debugging */
     border: 2px solid red;
 }
 
