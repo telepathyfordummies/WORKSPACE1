@@ -56,18 +56,35 @@
 </div>
 
 
-
-
   </div></div>
+
+  <!-- POWERBUTTON SCRIPT -->
 <script>
- const powerBtn = document.getElementById('power-btn');
+const powerBtn = document.getElementById('power-btn');
 const monitorOn = document.getElementById('monitor-on');
+const input = document.getElementById('real-input');
+const redBtn = document.getElementById('submit-red');
+
+let isMonitorOn = false;
 
 powerBtn.addEventListener('click', () => {
-  console.log('Power button clicked!');
-  monitorOn.classList.toggle('hidden'); // show/hide monitor-on.png
+  isMonitorOn = !isMonitorOn;
+
+  monitorOn.classList.toggle('hidden', !isMonitorOn);
+
+  // input behavior
+  input.disabled = !isMonitorOn;
+
+  // button behavior
+  redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+
+  // optional: clear things when turning off
+  if (!isMonitorOn) {
+    input.value = '';
+  }
 });
 </script>
+
 <!-- NAMEPLATE SCRIPT -->
   <script>
 const nameplateOne = document.getElementById('nameplate-one');
