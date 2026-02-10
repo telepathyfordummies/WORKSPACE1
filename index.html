@@ -42,7 +42,7 @@
 <!-- NAMEPLATE -->
 <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
 <!-- Single nameplate image -->
-<img id="nameplate" src="assets/shared/nameplate-one.png" alt="Nameplate" />
+<img id="nameplate" src="assets/ui/nameplate-one.png" alt="Nameplate" />
 
 
 
@@ -69,9 +69,9 @@ let isOne = true;
 
 nameplate.addEventListener('click', () => {
   if (isOne) {
-    nameplate.src = 'assets/shared/nameplate-other.png';
+    nameplate.src = 'assets/ui/nameplate-other.png';
   } else {
-    nameplate.src = 'assets/shared/nameplate-one.png';
+    nameplate.src = 'assets/ui/nameplate-one.png';
   }
   isOne = !isOne;
 });
