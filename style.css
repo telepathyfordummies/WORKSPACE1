@@ -18,19 +18,28 @@ body {
 }
 
 
+/* wrapper positioned exactly where the input-bar is */
+#input-wrapper {
+  position: absolute;
+  bottom: 50px;       /* distance from bottom of scene */
+  left: 50%;
+  transform: translateX(-50%) rotate(-30deg); /* rotate if input-bar is angled */
+  transform-origin: center;
+  width: 400px;       /* match input-bar width */
+  height: 50px;       /* match input-bar height */
+  z-index: 11;        /* above monitor */
+}
+
+/* input inside wrapper */
 #real-input {
   position: absolute;
-  top: 450px;     /* adjust manually to match input-bar */
-  left: 200px;    /* adjust manually */
-  width: 300px;   /* match visible area of input-bar */
-  height: 35px;   /* match height of input-bar */
-  transform: rotate(-30deg); /* match input-bar rotation */
-  transform-origin: top left; 
-  background-color: rgba(255,255,255,0.3); /* semi-transparent */
+  top: 0;             /* inside wrapper */
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: none;
-  border-radius: 4px;
   padding: 5px 10px;
+  background-color: rgba(173,216,230,0.4); /* semi-transparent to see alignment */
   font-size: 16px;
-  z-index: 11;    /* above input-bar */
-  color: black;   /* text color */
+  border-radius: 4px;
 }
