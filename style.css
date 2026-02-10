@@ -1,126 +1,55 @@
 /* ----------------------------- */
-/* BODY & SCENE */
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background: #000;
 }
 
+/* ----------------------------- */
 #scene {
   position: relative;
-  width: 1200px;              /* fixed width for now */
-  height: calc(1200 * 1640 / 2360px);  /* keeps aspect ratio */
+  width: 1200px;             /* fixed width for now */
+  height: 836px;             /* 1640 / 2360 * 1200 = 836 */
   margin: 0 auto;
-  background: black;           /* ensures you can see container */
+  background: black;
   overflow: hidden;
-  border: 1px solid red;       /* temporary debug border */
+  border: 1px solid red;     /* for debug */
 }
 
-
 /* ----------------------------- */
-/* BACKGROUND */
-#wall, #windows {
+#scene img,
+#monitor-wrapper {
   position: absolute;
+  height: auto;
+}
+
+/* Example placements for test */
+#wall {
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
   z-index: 0;
 }
 
 #desk {
-  position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: auto;
   z-index: 2;
 }
 
-
-/* ----------------------------- */
-/* MONITOR */
 #monitor-wrapper {
-  position: absolute;
-  left: 47%;      /* center of canvas */
-  bottom: 25%;    /* sits naturally on desk */
-  width: 28%;     /* scales monitor proportionally */
-  height: auto;
+  bottom: 200px;
+  left: 1100px;   /* absolute pixel for testing */
+  width: 650px;   /* scale proportionally */
   z-index: 5;
 }
 
-#monitor-shell {
-  width: 100%;
-  height: auto;
-}
-
-#monitor-screen {
-  position: absolute;
-  top: 12%;       /* inside monitor shell */
-  left: 12%;
-  width: 76%;
-  height: 65%;
-  background: black;
-  z-index: 6;
-}
-
-#monitor-screen.off {
-  display: none;  /* monitor starts off */
-}
-
-/* ----------------------------- */
-/* INPUT CONTAINER */
-#input-container {
-  position: absolute;
-  left: 50%;       /* center below monitor */
-  bottom: 15%;
-  transform: translateX(-50%);
-  width: 25%;
-  z-index: 7;
-}
-
-#input-bar {
-  width: 100%;
-  height: auto;
-}
-
-#submit-red, #submit-green {
-  position: absolute;
-  top: 0;
-  right: -60px;    /* sits beside input */
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-/* ----------------------------- */
-/* POWER BUTTON */
-#power-btn {
-  position: absolute;
-  right: 10%;
-  bottom: 50%;     /* float near monitor */
-  width: 50px;
-  height: auto;
-  z-index: 8;
-  cursor: pointer;
-}
-
-/* ----------------------------- */
-/* NAMEPLATE */
 #nameplate-base {
-  position: absolute;
-  left: 50%;       /* centered horizontally */
-  bottom: 80%;     /* floats above monitor */
-  transform: translateX(-50%);
+  bottom: 1300px;
+  left: 1180px;
   width: 150px;
-  height: auto;
   z-index: 9;
 }
+
+
