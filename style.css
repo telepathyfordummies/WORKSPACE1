@@ -58,20 +58,21 @@ body {
 
 
 #power-btn {
-  position: fixed;   /* floats above scene */
-  top: 600px;        /* adjust to match scene visually */
-  left: 900px;       /* adjust */
+  position: absolute;   /* now free to behave normally */
+  top: 650px;
+  left: 950px;
   width: 50px;
   height: 50px;
-  z-index: 9999;     /* ensures it’s above everything */
+  z-index: 1000;       /* above other scene elements */
   cursor: pointer;
 }
 
 #power-btn img {
   width: 100%;
   height: 100%;
-  pointer-events: none;  /* clicks go to div */
+  pointer-events: none;
 }
+
 
 #monitor-on {
   position: absolute;
