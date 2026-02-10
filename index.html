@@ -130,38 +130,6 @@ nameplateOther.addEventListener('click', () => {
 });
 </script>
   
-<!-- INPUT / OUTPUT SCRIPT -->
-  
- <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const redBtn = document.getElementById('submit-red');
-  const greenBtn = document.getElementById('submit-green');
-  const input = document.getElementById('real-input');
-  const output = document.getElementById('output');
-
-  // sanity check (temporary)
-  console.log(redBtn, greenBtn, input, output);
-
-  redBtn.addEventListener('click', () => {
-    const userText = input.value.trim();
-    if (!userText) return;
-
-    // flash green
-    redBtn.classList.add('hidden');
-    greenBtn.classList.remove('hidden');
-
-    // show output on monitor
-    output.textContent = `You typed: ${userText}`;
-
-    setTimeout(() => {
-      greenBtn.classList.add('hidden');
-      redBtn.classList.remove('hidden');
-    }, 500);
-
-    input.value = '';
-  });
-});
-</script>
 
   
 </body>
