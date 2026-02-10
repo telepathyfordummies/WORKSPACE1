@@ -21,6 +21,8 @@ body {
 #input-container {
   position: absolute;
   bottom: 10px;          /* distance from bottom of scene */
+ width: 363px;          /* pick the desired width for your input bar + buttons */
+  height: 100px;          /* pick the desired height */
   left: 50%;             /* center horizontally */
   transform: translateX(-50%);
   z-index: 10;           /* above desk/background */
