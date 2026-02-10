@@ -52,7 +52,8 @@ body {
 }
 
 #power-btn {
-  position: absolute;
-  z-index: 1000;
+  display: block;
+  width: fit-content;
+  height: fit-content;
 }
 
