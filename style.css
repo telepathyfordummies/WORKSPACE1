@@ -18,21 +18,24 @@ body {
   position: absolute;
 }
 
+/* Container below monitor */
 #input-container {
- position: relative; 
-  width: 400px;          /* explicit width of container */
-  height: 80px;          /* explicit height of container */
-  bottom: 30px;          /* distance from bottom of scene */
+  position: absolute;       /* absolute so we can place below monitor */
+  width: 400px;             /* explicit width */
+  height: 80px;             /* explicit height */
+  bottom: 30px;             /* adjust to sit below monitor */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;           /* above desk/background */
+    background: rgba(255,0,0,0.2);
+  z-index: 10;              /* above desk/background */
 }
 
+/* Child images fill container */
 #input-container img {
-  position: absolute;    /* relative to container */
+  position: absolute;       /* relative to container */
   top: 0;
   left: 0;
-  width: 100%;           /* scale to fill container */
-  height: 100%;          /* scale to fill container */
+  width: 100%;              /* fill container horizontally */
+  height: 100%;             /* fill container vertically */
   display: block;
 }
