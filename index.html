@@ -43,24 +43,6 @@
 
   </div></div>
 
-<script>
-function scaleScene() {
-  const scene = document.getElementById('scene');
-  const wrapper = document.getElementById('scene-wrapper');
-
-  const scaleX = wrapper.clientWidth / 800;
-  const scaleY = wrapper.clientHeight / 556;
-
-  // Only scale down if scene is larger than viewport
-  const scale = Math.min(1, Math.min(scaleX, scaleY));
-
-  scene.style.transform = `scale(${scale})`;
-}
-
-window.addEventListener('resize', scaleScene);
-window.addEventListener('load', scaleScene);
-</script>
-
   
 </body>
 </html>
