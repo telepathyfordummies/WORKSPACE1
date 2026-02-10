@@ -2,8 +2,9 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* keeps things from spilling out */
+  overflow: hidden;
 }
+
 
 
 #desk {
@@ -25,25 +26,30 @@
 }
 
 #monitor-wrapper {
-  position: absolute;
-  bottom: 30%;
+  position: absolute;  /* must be absolute */
+  bottom: 30%;         /* distance from bottom of scene */
   left: 50%;
   transform: translateX(-50%);
-  width: 40%;
-  z-index: 5; /* above desk */
+  width: 40%;          /* scale the monitor shell */
+  height: auto;
+  z-index: 5;
 }
+
+#input-container {
+  position: absolute;
+  bottom: 15%;         /* adjust so input is above desk */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;        /* width of input bar */
+  height: auto;
+  z-index: 7;
+}
+
 
 #monitor-screen {
   z-index: 6; /* screen overlay above monitor shell */
 }
 
-#input-container {
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 7; /* above desk and monitor */
-}
 
 #power-btn {
   z-index: 8; /* always clickable on top */
@@ -51,4 +57,32 @@
 
 #nameplate-base {
   z-index: 9; /* always on top visually */
+}
+
+#monitor-shell {
+  width: 100%;
+  height: auto;   /* prevents forcing stack */
+}
+
+#monitor-screen {
+  position: absolute; /* sits on top of monitor-shell */
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  background: black;
+  z-index: 6;
+}
+
+#input-bar {
+  width: 100%;
+  height: auto;
+}
+
+#submit-red, #submit-green {
+  position: absolute;
+  top: 0;
+  right: -60px; /* sit beside input */
+  width: 50px;
+  cursor: pointer;
 }
