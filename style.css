@@ -1,11 +1,3 @@
-#desk, #monitor-wrapper, #input-container, #power-btn, #nameplate-base {
-  width: 100px;   /* small for testing */
-  height: auto;
-  left: 50%;      /* center horizontally */
-  bottom: 50%;    /* center vertically */
-  transform: translate(-50%, 50%); /* adjust for center */
-  z-index: 2;
-}
 
 
 /* ----------------------------- */
@@ -43,28 +35,28 @@ body {
 
 #desk {
   position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 2360px; /* same as canvas width */
-  height: auto;
+  width: 600px;
+  left: 300px;      /* roughly center */
+  bottom: 0;
   z-index: 2;
 }
 
 #monitor-wrapper {
   position: absolute;
-  left: 1100px;
-  bottom: 400px;
-  width: 650px;
+  width: 400px;
+  left: 400px;
+  bottom: 200px;
   z-index: 5;
 }
 
 #nameplate-base {
   position: absolute;
-  left: 1180px;
-  bottom: 1300px;
   width: 150px;
+  left: 525px;
+  bottom: 600px;
   z-index: 9;
 }
+
 
 
 
