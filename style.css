@@ -111,3 +111,7 @@ body {
 #submit-green:not(.hidden) {
   pointer-events: auto;
 }
+
+#submit-green.hidden {
+  display: none;
+}
