@@ -39,6 +39,11 @@ body {
 }
 
 #monitor-on {
+  pointer-events: none;
+}
+
+
+#monitor-on {
   z-index: 6; /* sits on top of the monitor */
   pointer-events: none;
 }
