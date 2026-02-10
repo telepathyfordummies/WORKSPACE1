@@ -1,43 +1,4 @@
-#scene > * {
-  position: absolute;
-}
-
-#wall, #windows {
-  z-index: 0;
-}
-
-#desk {
-  z-index: 2;
-}
-
-#monitor-wrapper {
-  z-index: 5;
-}
-
-#input-container {
-  z-index: 7;
-}
-
-#power-btn {
-  z-index: 8;
-}
-
-#nameplate-base {
-  z-index: 9;
-}
-
-
-#desk, #monitor-wrapper, #input-container, #power-btn, #nameplate-base {
-  width: 200px;          /* temporary test size */
-  height: auto;
-  left: 50%;             /* center horizontally */
-  bottom: 50%;           /* center vertically */
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-
-/* Body & scene */
+/* ----------------------------- */
 body {
   margin: 0;
   padding: 0;
@@ -48,27 +9,22 @@ body {
   height: 100vh;
 }
 
+/* Scene container */
 #scene {
   position: relative;
-  width: 1200px;         /* fixed width for now */
-  height: 836px;         /* 1640/2360 * 1200 */
-  margin: 0 auto;
+  width: 1200px;               /* fixed container width for now */
+  height: 836px;               /* 1640 / 2360 ratio */
   background: black;
-  overflow: visible;
-  border: 2px solid red; /* for debugging */
+  overflow: hidden;
+  border: 2px solid red;       /* debug border to see container */
 }
 
-
-
-/* Make everything inside fill container proportionally */
-#scene img,
-#monitor-wrapper,
-#input-container {
+/* Force all direct children to absolute positioning */
+#scene > * {
   position: absolute;
-  width: auto;
-  height: auto;
 }
 
+/* ----------------------------- */
 /* Background */
 #wall, #windows {
   top: 0;
@@ -78,9 +34,23 @@ body {
   z-index: 0;
 }
 
-
+/* Desk */
+#desk {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
 
 /* Monitor */
+#monitor-wrapper {
+  bottom: 250px;       /* floats on desk */
+  left: 45%;
+  width: 28%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
 
 #monitor-shell {
   width: 100%;
@@ -103,7 +73,7 @@ body {
 
 /* Input */
 #input-container {
-  bottom: 20%;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%);
   width: 25%;
@@ -120,6 +90,7 @@ body {
   top: 0;
   right: -60px;
   width: 50px;
+  height: auto;
   cursor: pointer;
 }
 
@@ -129,7 +100,7 @@ body {
 
 /* Power button */
 #power-btn {
-  bottom: 45%;
+  bottom: 450px;
   right: 10%;
   width: 50px;
   height: auto;
@@ -137,21 +108,12 @@ body {
   cursor: pointer;
 }
 
-#desk {
-  bottom: 0;        /* desk touches bottom */
-  left: 0;          /* aligned left */
-  width: 100%;      /* spans full width */
-}
-
-#monitor-wrapper {
-  bottom: 250px;    /* floats on desk */
-  left: 45%;
-  width: 28%;
-  transform: translateX(-50%);
-}
-
+/* Nameplate */
 #nameplate-base {
-  bottom: 650px;    /* floats above monitor */
+  bottom: 650px;
   left: 50%;
   transform: translateX(-50%);
+  width: 150px;
+  z-index: 9;
 }
+
