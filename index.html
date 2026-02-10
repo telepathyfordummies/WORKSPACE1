@@ -37,8 +37,11 @@
 <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
 
 
-    <!-- NAMEPLATE -->
-    <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
+<!-- NAMEPLATE -->
+<img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
+<img id="nameplate-one" src="assets/ui/nameplate-one.png" alt="Nameplate One">
+<img id="nameplate-other" src="assets/ui/nameplate-other.png" alt="Nameplate Other" class="hidden">
+
 
   </div></div>
 <script>
@@ -48,6 +51,21 @@ const monitorOn = document.getElementById('monitor-on');
 powerBtn.addEventListener('click', () => {
   console.log('Power button clicked!');
   monitorOn.classList.toggle('hidden'); // show/hide monitor-on.png
+});
+</script>
+
+  <script>const nameplateOne = document.getElementById('nameplate-one');
+const nameplateOther = document.getElementById('nameplate-other');
+
+// Start with nameplateOne visible, nameplateOther hidden
+nameplateOne.addEventListener('click', () => {
+  nameplateOne.classList.add('hidden');
+  nameplateOther.classList.remove('hidden');
+});
+
+nameplateOther.addEventListener('click', () => {
+  nameplateOther.classList.add('hidden');
+  nameplateOne.classList.remove('hidden');
 });
 </script>
   
