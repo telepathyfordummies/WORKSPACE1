@@ -14,65 +14,55 @@ body {
   background: #111;
 }
 
-/* Only images inside the scene get absolute positioning */
-#scene > img {
+/* Layered absolute elements */
+#background-layer img {
   position: absolute;
-}
-
-/* WALL & WINDOWS */
-#wall {
   top: 0;
   left: 0;
   z-index: 0;
 }
-#windows {
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
 
-/* DESK */
-#desk {
+#desk-layer img {
+  position: absolute;
   bottom: 0;
   left: 0;
   z-index: 2;
 }
 
-/* MONITOR */
+/* Monitor */
 #monitor-wrapper {
   position: absolute;
-  top: 100px;    /* adjust vertical placement */
-  left: 200px;   /* adjust horizontal placement */
-  z-index: 5;    /* above desk, below input if needed */
+  top: 100px;    /* adjust as needed */
+  left: 200px;   /* adjust as needed */
+  z-index: 5;
 }
 
-/* INPUT container */
+/* Input wrapper */
 #input-wrapper {
   position: absolute;
-  bottom: 30px;        /* distance from bottom of scene */
+  bottom: 50px;   /* adjust distance from desk */
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;        /* container width */
-  height: 80px;        /* container height */
-  z-index: 10;         /* above desk/background */
+  width: 400px;
+  height: 80px;
+  z-index: 10;
 }
 
 #input-container {
-  position: relative;  /* children are positioned relative to this */
+  position: relative;   /* children scale relative to this */
   width: 100%;
   height: 100%;
 }
 
 #input-container img {
-  position: absolute;  /* scale inside container */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: block;
 }
 
-/* POWER BUTTON */
+/* Power button */
 #power-btn {
   position: absolute;
   bottom: 50px;
@@ -80,7 +70,7 @@ body {
   z-index: 12;
 }
 
-/* NAMEPLATE */
+/* Nameplate */
 #nameplate-base {
   position: absolute;
   bottom: 0;
