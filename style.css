@@ -2,19 +2,16 @@
 body {
   margin: 0;
   background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 #scene {
   position: relative;
-  width: 800px;
-  height: 556px;
+  width: 100vw;
+  height: 100vh;
   background: #111;
-  margin: auto;
+  overflow: hidden;
 }
+
 
 #scene > * {
   position: absolute;
