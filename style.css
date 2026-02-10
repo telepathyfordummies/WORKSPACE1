@@ -28,6 +28,11 @@ body {
   width: 300px;          /* match your input images */
   height: 50px;          /* match your input images */
   z-index: 5;            /* ensure it's above monitor shell */
+  
+  #input-container {
+  border: 2px solid red; /* visual debug */
+}
+
 }
 
 /* Make all images inside container fit correctly */
