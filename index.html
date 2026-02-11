@@ -237,7 +237,85 @@ interactiveElements.forEach(id => {
   });
 });
 
-    
+    <script>
+  // ------------------------------
+  // 1️⃣ Desk responses
+  // ------------------------------
+  const responsesOne = {
+    hello: { type: 'text', content: 'Hi there! Welcome to Desk One.' },
+    rock: { type: 'image', content: 'assets/shared/rock-popup.png' },
+    default: { type: 'text', content: 'I don’t understand that.' }
+  };
+
+  const responsesOther = {
+    hello: { type: 'text', content: 'Hello from Desk Two!' },
+    crystal: { type: 'image', content: 'assets/shared/crystal-ball-popup.png' },
+    default: { type: 'text', content: 'I’m not sure what you mean.' }
+  };
+
+  // ------------------------------
+  // 2️⃣ Function to display response on monitor
+  // ------------------------------
+  function showResponse(response) {
+    const output = document.getElementById('output');
+    output.innerHTML = ''; // clear previous content
+
+    if (response.type === 'text') {
+      const p = document.createElement('p');
+      p.textContent = response.content;
+      p.style.color = 'lime';
+      p.style.fontFamily = "'Roboto Mono', monospace";
+      p.style.fontSize = '24px';
+      p.style.margin = 0;
+      output.appendChild(p);
+    }
+
+    if (response.type === 'image') {
+      const img = document.createElement('img');
+      img.src = response.content;
+      img.style.maxWidth = '80%';
+      img.style.maxHeight = '80%';
+      img.style.display = 'block';
+      img.style.margin = '0 auto';
+      output.appendChild(img);
+    }
+  }
+
+  // ------------------------------
+  // 3️⃣ Input & button handling
+  // ------------------------------
+  const redBtn = document.getElementById('submit-red');
+  const greenBtn = document.getElementById('submit-green');
+  const input = document.getElementById('real-input');
+
+  redBtn.addEventListener('click', () => {
+    const userText = input.value.trim().toLowerCase();
+    if (!userText) return;
+
+    // Determine active desk
+    const deskResponses = nameplateOne.classList.contains('hidden')
+      ? responsesOther
+      : responsesOne;
+
+    // Get the response
+    const response = deskResponses[userText] || deskResponses.default;
+
+    // Show it on monitor
+    showResponse(response);
+
+    // Flash green button
+    redBtn.classList.add('hidden');
+    greenBtn.classList.remove('hidden');
+    setTimeout(() => {
+      greenBtn.classList.add('hidden');
+      redBtn.classList.remove('hidden');
+    }, 500);
+
+    // Clear input
+    input.value = '';
+  });
+</script>
+
     
   </script>
   
