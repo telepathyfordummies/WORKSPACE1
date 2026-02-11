@@ -74,6 +74,11 @@
   <!-- AUDIOOOOOO!!! -->
   <audio id="thunder-audio" src="assets/audio/thunder-audio.mp3" preload="auto"></audio>
 
+  <!-- Ambient Audio Speicifcally, yes I'm separating them -->
+<audio id="ambient-one" src="assets/audio/one-ambient.mp3" preload="auto" loop autoplay></audio>
+<audio id="ambient-other" src="assets/audio/other-ambient.mp3" preload="auto" loop autoplay></audio>
+
+
 
   <!-- IF YOU'RE IN HERE YOU'RE NOSY AS FUCK. STOP IT!!!!! STOP DOING THAT!!! BEHAVE!!!! -->
 
@@ -407,8 +412,8 @@ nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
 
   // --- AMBIENT AUDIO ---
-const ambientOne = new Audio('assets/audio/libets-delay.mp3');
-const ambientOther = new Audio('assets/audio/black-ice-cave.mp3');
+const ambientOne = new Audio('assets/audio/one-ambient.mp3');
+const ambientOther = new Audio('assets/audio/other-ambient.mp3');
 
 ambientOne.loop = true;
 ambientOther.loop = true;
