@@ -399,23 +399,19 @@ let stormTimeout;
 if (backgroundOther) backgroundOther.style.display = 'none';
 
 function triggerLightning() {
-  // Only trigger if Desk Other is active AND monitor is on
   if (!isMonitorOn) return;
-  if (nameplateOther.classList.contains('hidden')) return; // Desk Other not active
+  if (nameplateOther.classList.contains('hidden')) return;
   if (!backgroundOther) return;
 
-  // FLASH: show background temporarily
   backgroundOther.style.display = 'block';
   backgroundOther.classList.add('lightning-flash');
 
-  // THUNDER simultaneously (60% chance)
   if (Math.random() < 0.6 && thunderAudio) {
     thunderAudio.volume = Math.random() * 0.5 + 0.3;
     thunderAudio.currentTime = 0;
     thunderAudio.play().catch(() => {});
   }
 
-  // Remove flash and hide background after 250ms
   setTimeout(() => {
     backgroundOther.classList.remove('lightning-flash');
     backgroundOther.style.display = 'none';
@@ -423,24 +419,19 @@ function triggerLightning() {
 }
 
 function scheduleStorm() {
-  // Clear previous timeout
   if (stormTimeout) clearTimeout(stormTimeout);
 
-  // Only schedule if Desk Other is active AND monitor is on
   if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
 
-  const randomDelay = Math.random() * 5000 + 15000; // 15–20s
+  const randomDelay = Math.random() * 5000 + 15000;
 
   stormTimeout = setTimeout(() => {
-    // Double-check Desk Other is still active before triggering
     if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
-
     triggerLightning();
-    scheduleStorm(); // loop
+    scheduleStorm();
   }, randomDelay);
 }
 
-// Start/stop storm based on desk toggle
 function updateStorm() {
   if (!isMonitorOn || nameplateOther.classList.contains('hidden')) {
     if (stormTimeout) clearTimeout(stormTimeout);
@@ -456,7 +447,8 @@ updateStorm();
 nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
 
-  });
+}); 
+
 
 </script>
 </body>
