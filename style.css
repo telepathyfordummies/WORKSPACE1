@@ -17,6 +17,17 @@ body {
   position: absolute;
 }
 
+#windows, #wall {
+  z-index: 10
+}
+
+#desk {
+  z-index: 15
+}
+
+#nameplate-base, #monitor-on, #monitor-screen, #monitor-shell, #monitor-wrapper, #drawercontainer, #input-bar, #input-bg {
+  z-index: 20
+}
 
 #real-input {
   position: absolute;
@@ -137,6 +148,16 @@ body {
 }
 
 #drawer-clickable-one {
+  position: absolute;
+  top: 1100px;
+  left: 1920px;
+  z-index: 300;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#drawer-clickable-other {
   position: absolute;
   top: 1100px;
   left: 1920px;
