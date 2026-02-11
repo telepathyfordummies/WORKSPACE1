@@ -170,3 +170,43 @@ body {
   display: block;
   object-fit: contain;
 }
+
+#crystal-ball {
+  position: absolute;
+  top: 970px;
+  left: 1620px;
+  z-index: 310;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#dice {
+  position: absolute;
+  top: 1180px;
+  left: 1320px;
+  z-index: 310;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#pendant {
+  position: absolute;
+  top: 1000px;
+  left: 1770px;
+  z-index: 310;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#hummels {
+  position: absolute;
+  top: 990px;
+  left: 1900px;
+  z-index: 310;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
