@@ -177,35 +177,41 @@ nameplateOther.addEventListener('click', () => {
 <!-- POP UPS! -->
   
   <script>
-    // Function to show a pop-up for a clicked element
-function showPopup(elementId) {
+ function showPopup(elementId) {
   // Remove any existing popup first
   const existingPopup = document.getElementById('current-popup');
   if (existingPopup) existingPopup.remove();
 
-  // Build popup image path from element ID
   const popupSrc = `assets/shared/${elementId}-popup.png`;
+  console.log('Loading popup:', popupSrc);
 
-  // Create the popup image element
+  // Create the popup image
   const popup = document.createElement('img');
   popup.id = 'current-popup';
   popup.src = popupSrc;
-  popup.style.position = 'absolute';
-  popup.style.top = '200px'; // adjust to position on screen
-  popup.style.left = '500px'; // adjust as needed
-  popup.style.zIndex = '600'; // above all other elements
-  popup.style.width = '400px'; // optional sizing
+
+  // Centered positioning
+  popup.style.position = 'fixed'; // fixed so it ignores parent
+  popup.style.top = '50%';
+  popup.style.left = '50%';
+  popup.style.transform = 'translate(-50%, -50%)'; // truly center
+  popup.style.zIndex = '600';
+  popup.style.width = '50vw'; // adjust as needed
   popup.style.height = 'auto';
   popup.style.cursor = 'pointer';
 
-  // Close the popup when clicked
+  // Optional: add drop shadow to make it stand out
+  popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+
+  // Close popup on click
   popup.addEventListener('click', () => {
     popup.remove();
   });
 
-  // Add popup to the scene
-  document.getElementById('scene').appendChild(popup);
+  // Add popup to scene
+  document.body.appendChild(popup); // use body since it's fixed
 }
+
 
     //MAY NEED TO SPLIT...? 
 
