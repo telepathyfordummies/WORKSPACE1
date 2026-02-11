@@ -29,6 +29,10 @@
       <div id="monitor-screen" class="off">
         <div id="output"></div>
       </div>
+      <!-- MONITOR OVERLAYS -->
+<div id="monitor-overlay-one" class="monitor-overlay hidden"></div>
+<div id="monitor-overlay-other" class="monitor-overlay hidden"></div>
+
     </div>
     
     <!-- INPUT -->
@@ -242,7 +246,87 @@ interactiveElements.forEach(id => {
     
   </script>
   
+<!-- trying this in its own script -->
 
+  <script>// Grab overlays
+const monitorOverlayOne = document.getElementById('monitor-overlay-one');
+const monitorOverlayOther = document.getElementById('monitor-overlay-other');
+
+// Modify submit button logic
+redBtn.addEventListener('click', () => {
+  if (!isMonitorOn) return;
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  redBtn.classList.add('hidden');
+  greenBtn.classList.remove('hidden');
+
+  // Send text to correct overlay
+  if (nameplateOther.classList.contains('hidden')) {
+    // One is active
+    monitorOverlayOne.style.display = 'block';
+    monitorOverlayOne.textContent = userText;
+  } else {
+    // Other is active
+    monitorOverlayOther.style.display = 'block';
+    monitorOverlayOther.textContent = userText;
+  }
+
+  setTimeout(() => {
+    greenBtn.classList.add('hidden');
+    redBtn.classList.remove('hidden');
+  }, 500);
+
+  input.value = '';
+});
+
+// Modify power button logic to hide overlays when off
+powerBtn.addEventListener('click', () => {
+  isMonitorOn = !isMonitorOn;
+  monitorOn.classList.toggle('hidden', !isMonitorOn);
+  input.disabled = !isMonitorOn;
+  redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+
+  if (!isMonitorOn) {
+    input.value = '';
+    monitorOverlayOne.style.display = 'none';
+    monitorOverlayOther.style.display = 'none';
+    monitorOverlayOne.textContent = '';
+    monitorOverlayOther.textContent = '';
+    output.textContent = '';
+  } else {
+    // Show overlay for active nameplate
+    if (nameplateOther.classList.contains('hidden')) {
+      monitorOverlayOne.style.display = 'block';
+    } else {
+      monitorOverlayOther.style.display = 'block';
+    }
+  }
+});
+
+// Modify nameplate toggles to switch overlays
+nameplateOne.addEventListener('click', () => {
+  nameplateOne.classList.add('hidden');
+  nameplateOther.classList.remove('hidden');
+
+  extrasOne.classList.add('hidden');
+  extrasOther.classList.remove('hidden');
+
+  monitorOverlayOne.style.display = 'none';
+  monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
+});
+
+nameplateOther.addEventListener('click', () => {
+  nameplateOther.classList.add('hidden');
+  nameplateOne.classList.remove('hidden');
+
+  extrasOther.classList.add('hidden');
+  extrasOne.classList.remove('hidden');
+
+  monitorOverlayOther.style.display = 'none';
+  monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
+});
+</script>
   
 </body>
 </html>
