@@ -43,7 +43,7 @@ body {
   transform-origin: top left;  /* rotate around top-left corner */
   border: none;
   background-color: rgba(173,216,230,0.0);  /* semi-transparent for alignment */
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'Roboto Mono', monospace;
   font-weight: 700; /* bold */
    text-transform: uppercase;
