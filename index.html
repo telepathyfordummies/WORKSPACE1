@@ -86,26 +86,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // --- DOM ELEMENTS ---
-
-  // --- AMBIENT AUDIO ---
-const ambientOne = document.getElementById('ambient-one');
-const ambientOther = document.getElementById('ambient-other');
-let ambientStarted = false;
-
-function startAmbient() {
-  if (ambientStarted) return;
-  ambientStarted = true;
-
-  // Set volumes
-  ambientOne.volume = 0.3;
-  ambientOther.volume = 0.3;
-
-  // Play both audios; browser allows play because user just clicked
-  ambientOne.play().catch(() => {});
-  ambientOther.play().catch(() => {});
-}
-
-  // ---OTHER DOM STUFF
+  const ambientOne = document.getElementById('ambient-one');
+  const ambientOther = document.getElementById('ambient-other');
   const powerBtn = document.getElementById('power-btn');
   const monitorOn = document.getElementById('monitor-on');
   const input = document.getElementById('real-input');
@@ -125,6 +107,8 @@ function startAmbient() {
   thunderAudio.volume = 0.3;
 
   let isMonitorOn = false;
+  let ambientStarted = false;
+  let stormTimeout;
 
 
   // HELLOOOOO YOUR RESPONSES GO HERE!!! IF YOU ARE READING THIS AND YOU ARE NOT ME, TELEPATHYFORDUMMIES, GET THE FUCK OUT!!!!! YOU'RE CHEATING!!! I KNOW WHAT YOU ARE!!!!!!!
@@ -254,15 +238,73 @@ function startAmbient() {
     "mcgriddles": "I swear theres a st0ry behind it."
   };
 
-// --- POWER BUTTON ---
- powerBtn.addEventListener('click', () => {
-  // Start ambient audio on first user interaction
-  startAmbient();
+// --- AMBIENT AUDIO & STORM ---
+  function startAmbient() {
+    if (ambientStarted) return;
+    ambientStarted = true;
 
-  isMonitorOn = !isMonitorOn;
-  monitorOn.classList.toggle('hidden', !isMonitorOn);
-  input.disabled = !isMonitorOn;
-  redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+    ambientOne.volume = 0.3;
+    ambientOther.volume = 0.3;
+
+    ambientOne.play().catch(() => {});
+    ambientOther.play().catch(() => {});
+
+    // Start lightning storm after first interaction
+    scheduleStorm();
+  }
+
+  // --- LIGHTNING STORM ---
+  if (backgroundOther) backgroundOther.style.display = 'none';
+
+  function triggerLightning() {
+    if (!isMonitorOn || nameplateOther.classList.contains('hidden') || !backgroundOther) return;
+
+    backgroundOther.style.display = 'block';
+    backgroundOther.classList.add('lightning-flash');
+
+    if (Math.random() < 0.6 && thunderAudio) {
+      thunderAudio.volume = Math.random() * 0.5 + 0.3;
+      thunderAudio.currentTime = 0;
+      thunderAudio.play().catch(() => {});
+    }
+
+    setTimeout(() => {
+      backgroundOther.classList.remove('lightning-flash');
+      backgroundOther.style.display = 'none';
+    }, 250);
+  }
+
+  function scheduleStorm() {
+    if (stormTimeout) clearTimeout(stormTimeout);
+
+    if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
+
+    const randomDelay = Math.random() * 5000 + 15000; // 15–20s
+
+    stormTimeout = setTimeout(() => {
+      if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
+      triggerLightning();
+      scheduleStorm();
+    }, randomDelay);
+  }
+
+  function updateStorm() {
+    if (!isMonitorOn || nameplateOther.classList.contains('hidden')) {
+      if (stormTimeout) clearTimeout(stormTimeout);
+    } else {
+      scheduleStorm();
+    }
+  }
+
+  // --- POWER BUTTON ---
+  powerBtn.addEventListener('click', () => {
+    // Start ambient audio and storm on first user interaction
+    startAmbient();
+
+    isMonitorOn = !isMonitorOn;
+    monitorOn.classList.toggle('hidden', !isMonitorOn);
+    input.disabled = !isMonitorOn;
+    redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
 
     // reset overlays when turning off
     if (!isMonitorOn) {
@@ -280,7 +322,7 @@ function startAmbient() {
       }
     }
 
-    // optional: little thunder effect when turning on??
+    // optional: little thunder effect when turning on
     thunderAudio.currentTime = 0;
     thunderAudio.play().catch(() => {});
   });
@@ -295,11 +337,9 @@ function startAmbient() {
     greenBtn.classList.remove('hidden');
 
     if (nameplateOther.classList.contains('hidden')) {
-      // Desk One active
       monitorOverlayOne.style.display = 'flex';
       monitorOverlayOne.textContent = deskOneResponses[normalized] || "[INPUT NOT FOUND.]";
     } else {
-      // Desk Other active
       monitorOverlayOther.style.display = 'flex';
       monitorOverlayOther.textContent = deskOtherResponses[normalized] || "[INPUT NOT FOUND.]";
     }
@@ -321,6 +361,7 @@ function startAmbient() {
 
     monitorOverlayOne.style.display = 'none';
     monitorOverlayOther.style.display = isMonitorOn ? 'flex' : 'none';
+    updateStorm();
   });
 
   nameplateOther.addEventListener('click', () => {
@@ -331,6 +372,7 @@ function startAmbient() {
 
     monitorOverlayOther.style.display = 'none';
     monitorOverlayOne.style.display = isMonitorOn ? 'flex' : 'none';
+    updateStorm();
   });
 
   // --- POPUPS ---
@@ -369,65 +411,7 @@ function startAmbient() {
     });
   });
 
- 
-// --- LIGHTNING STORM ---
-let stormTimeout;
-
-// Ensure backgroundOther is hidden by default
-if (backgroundOther) backgroundOther.style.display = 'none';
-
-function triggerLightning() {
-  if (!isMonitorOn) return;
-  if (nameplateOther.classList.contains('hidden')) return;
-  if (!backgroundOther) return;
-
-  backgroundOther.style.display = 'block';
-  backgroundOther.classList.add('lightning-flash');
-
-  if (Math.random() < 0.6 && thunderAudio) {
-    thunderAudio.volume = Math.random() * 0.5 + 0.3;
-    thunderAudio.currentTime = 0;
-    thunderAudio.play().catch(() => {});
-  }
-
-  setTimeout(() => {
-    backgroundOther.classList.remove('lightning-flash');
-    backgroundOther.style.display = 'none';
-  }, 250);
-}
-
-function scheduleStorm() {
-  if (stormTimeout) clearTimeout(stormTimeout);
-
-  if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
-
-  const randomDelay = Math.random() * 5000 + 15000;
-
-  stormTimeout = setTimeout(() => {
-    if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
-    triggerLightning();
-    scheduleStorm();
-  }, randomDelay);
-}
-
-function updateStorm() {
-  if (!isMonitorOn || nameplateOther.classList.contains('hidden')) {
-    if (stormTimeout) clearTimeout(stormTimeout);
-  } else {
-    scheduleStorm();
-  }
-}
-
-// Initially start storm
-updateStorm();
-
-// Also restart storm whenever desks toggle
-nameplateOne.addEventListener('click', updateStorm);
-nameplateOther.addEventListener('click', updateStorm);
-
 }); 
-
-
 </script>
 </body>
 </html>
