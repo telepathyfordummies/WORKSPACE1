@@ -452,19 +452,7 @@ const drawerOpenAudio = new Audio('assets/audio/drawer-open.mp3');
 drawerOpenAudio.volume = 0.4;
 
 // --- INTERACTIVE ELEMENTS ---
-const interactiveElements = [
-  'rock', 'books', 'drawer-clickable-one',
-  'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
-];
 
-interactiveElements.forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  el.addEventListener('click', () => {
-    // Only show popup if desk is active
-    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
-    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
 
     // Play drawer sound only for drawer elements
     if (id === 'drawer-clickable-one' || id === 'drawer-clickable-other') {
