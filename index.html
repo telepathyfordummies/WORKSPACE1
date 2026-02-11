@@ -11,334 +11,205 @@
 </head>
 <body>
   <div id="scene-wrapper">
-  <div id="scene">
+    <div id="scene">
+      <!-- BACKGROUND -->
+      <img id="wall" src="assets/shared/wall.png" alt="Wall">
+      <img id="windows" src="assets/shared/windows.png" alt="Windows">
 
-    <!-- BACKGROUND -->
-    <img id="wall" src="assets/shared/wall.png" alt="Wall">
-    <img id="windows" src="assets/shared/windows.png" alt="Windows">
+      <!-- DESK -->
+      <img id="desk" src="assets/shared/desk.png" alt="Desk">
+      <img id="drawercontainer" src="assets/shared/drawer-container.png">
+      <img id="candle" src="assets/shared/candle.png">
 
-    <!-- DESK -->
-    <img id="desk" src="assets/shared/desk.png" alt="Desk">
-    <img id="drawercontainer" src="assets/shared/drawer-container.png">
-    <img id="candle" src="assets/shared/candle.png">
+      <!-- MONITOR -->
+      <div id="monitor-wrapper">
+        <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+        <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" class="hidden">
+        <div id="monitor-screen" class="off"><div id="output"></div></div>
 
-    <!-- MONITOR -->
-    <div id="monitor-wrapper">
-      <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-       <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" class="hidden">
-      <div id="monitor-screen" class="off">
-        <div id="output"></div>
+        <!-- Overlays for One/Other -->
+        <div id="monitor-overlay-one" class="monitor-overlay hidden"></div>
+        <div id="monitor-overlay-other" class="monitor-overlay hidden"></div>
       </div>
-      <!-- MONITOR OVERLAYS -->
-<div id="monitor-overlay-one" class="monitor-overlay hidden"></div>
-<div id="monitor-overlay-other" class="monitor-overlay hidden"></div>
 
+      <!-- INPUT -->
+      <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
+      <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
+      <input type="text" id="real-input" placeholder=" ">
+
+      <img id="submit-red" src="assets/shared/button-red.png" alt="Submit Button">
+      <img id="submit-green" src="assets/shared/button-green.png" alt="Submit Button Green" class="hidden">
+
+      <!-- POWER BUTTON -->
+      <img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
+
+      <!-- NAMEPLATE -->
+      <img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
+      <img id="nameplate-one" src="assets/shared/nameplate-one.png" alt="Nameplate One">
+      <img id="nameplate-other" src="assets/shared/nameplate-other.png" alt="Nameplate Other" class="hidden">
+
+      <!-- Nameplate One Extras -->
+      <div id="extras-one">
+        <img id="background-one" src="assets/one/background-one.png">
+        <img id="rock" src="assets/one/rock.png">
+        <img id="books" src="assets/one/books.png">
+        <img id="drawer-clickable-one" src="assets/shared/drawer-clickable.png">
+      </div>
+
+      <!-- Nameplate Other Extras -->
+      <div id="extras-other" class="hidden">
+        <img id="background-other" src="assets/other/background-other.png">
+        <img id="crystal-ball" src="assets/other/crystal-ball.png">
+        <img id="dice" src="assets/other/dice.png">
+        <img id="pendant" src="assets/other/pendant.png">
+        <img id="hummels" src="assets/other/hummels.png">
+        <img id="hummels2" src="assets/other/hummels2.png">
+        <img id="drawer-clickable-other" src="assets/shared/drawer-clickable.png">
+      </div>
     </div>
-    
-    <!-- INPUT -->
+  </div>
 
-  <img id="input-bg" src="assets/shared/input-container.png" alt="Input Bar Background">
-  <img id="input-bar" src="assets/shared/input-bar.png" alt="Input Bar">
-  <input type="text" id="real-input" placeholder=" ">
-<img
-  id="submit-red"
-  src="assets/shared/button-red.png"
-  alt="Submit Button">
-
-<img
-  id="submit-green"
-  src="assets/shared/button-green.png"
-  alt="Submit Button Green"
-  class="hidden">
-
-    <!-- POWER BUTTON -->
-<img id="power-btn" src="assets/shared/power-button.png" alt="Power Button">
-
-
-<!-- NAMEPLATE -->
-<img id="nameplate-base" src="assets/shared/nameplate-base.png" alt="Nameplate Base">
-<!-- Only one is visible to start -->
-<img id="nameplate-one" src="assets/shared/nameplate-one.png" alt="Nameplate One">
-<img id="nameplate-other" src="assets/shared/nameplate-other.png" alt="Nameplate Other" class="hidden">
-
-
-
-<!-- Nameplate One Extras -->
-<div id="extras-one">
-  <img id="background-one" src="assets/one/background-one.png">
-  <img id="rock" src="assets/one/rock.png">
-  <img id="books" src="assets/one/books.png">
-  <img id="drawer-clickable-one" src="assets/shared/drawer-clickable.png">
-</div>
-
-<!-- Nameplate Other Extras -->
-<div id="extras-other" class="hidden">
-  <img id="background-other" src="assets/other/background-other.png">
-  <img id="crystal-ball" src="assets/other/crystal-ball.png">
-  <img id="dice" src="assets/other/dice.png">
-  <img id="pendant" src="assets/other/pendant.png">
-  <img id="hummels" src="assets/other/hummels.png">
-  <img id="hummels2" src="assets/other/hummels2.png">
-  <img id="drawer-clickable-other" src="assets/shared/drawer-clickable.png">
-</div>
-
-    
-</div>
-  </div></div>
-
-  <!-- POWERBUTTON SCRIPT -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const powerBtn = document.getElementById('power-btn');
-  const monitorOn = document.getElementById('monitor-on');
-  const input = document.getElementById('real-input');
-  const redBtn = document.getElementById('submit-red');
-  const greenBtn = document.getElementById('submit-green');
-  const output = document.getElementById('output');
-
-  // Track monitor state globally
-  let isMonitorOn = false;
-
-  // Power button toggle
-  powerBtn.addEventListener('click', () => {
-    isMonitorOn = !isMonitorOn;
-    monitorOn.classList.toggle('hidden', !isMonitorOn);
-
-    // Enable or disable input
-    input.disabled = !isMonitorOn;
-
-    // Enable/disable submit button
-    redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
-
-    // Optional: clear input when turning off
-    if (!isMonitorOn) {
-      input.value = '';
-      output.textContent = ''; // clear monitor
-    }
-  });
-
-  // Submit button logic
-  redBtn.addEventListener('click', () => {
-  if (!isMonitorOn) return;
-  const userText = input.value.trim().toLowerCase(); // lowercase for easier matching
-  if (!userText) return;
-
-  redBtn.classList.add('hidden');
-  greenBtn.classList.remove('hidden');
-
-  let outputText = "";
-
-  if (nameplateOther.classList.contains('hidden')) {
-    // One is active
-    outputText = deskOneResponses[userText] || "Desk One: Unknown command";
-    monitorOverlayOne.style.display = 'block';
-    monitorOverlayOne.textContent = outputText;
-  } else {
-    // Other is active
-    outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
-    monitorOverlayOther.style.display = 'block';
-    monitorOverlayOther.textContent = outputText;
-  }
-
-  setTimeout(() => {
-    greenBtn.classList.add('hidden');
-    redBtn.classList.remove('hidden');
-  }, 500);
-
-  input.value = '';
-});
-
-</script>
-
-<!-- NAMEPLATE SCRIPT -->
+  <!-- JS -->
   <script>
-const nameplateOne = document.getElementById('nameplate-one');
-const nameplateOther = document.getElementById('nameplate-other');
+  document.addEventListener('DOMContentLoaded', () => {
+    const powerBtn = document.getElementById('power-btn');
+    const monitorOn = document.getElementById('monitor-on');
+    const input = document.getElementById('real-input');
+    const redBtn = document.getElementById('submit-red');
+    const greenBtn = document.getElementById('submit-green');
+    const output = document.getElementById('output');
 
-nameplateOne.addEventListener('click', () => {
-  nameplateOne.classList.add('hidden');
-  nameplateOther.classList.remove('hidden');
-});
-
-nameplateOther.addEventListener('click', () => {
-  nameplateOther.classList.add('hidden');
-  nameplateOne.classList.remove('hidden');
-});
-</script>
-
-<!--EXTRAS SCRIPT-->
-  
-  <script>
+    const nameplateOne = document.getElementById('nameplate-one');
+    const nameplateOther = document.getElementById('nameplate-other');
     const extrasOne = document.getElementById('extras-one');
-const extrasOther = document.getElementById('extras-other');
+    const extrasOther = document.getElementById('extras-other');
 
-nameplateOne.addEventListener('click', () => {
-  nameplateOne.classList.add('hidden');
-  nameplateOther.classList.remove('hidden');
+    const monitorOverlayOne = document.getElementById('monitor-overlay-one');
+    const monitorOverlayOther = document.getElementById('monitor-overlay-other');
 
-  extrasOne.classList.add('hidden');
-  extrasOther.classList.remove('hidden');
-});
+    let isMonitorOn = false;
 
-nameplateOther.addEventListener('click', () => {
-  nameplateOther.classList.add('hidden');
-  nameplateOne.classList.remove('hidden');
+    // Responses for each desk
+    const deskOneResponses = {
+      "hello": "Desk Number One",
+      "help": "Desk One says: Be careful!"
+    };
+    const deskOtherResponses = {
+      "hello": "Desk Number Two",
+      "help": "Desk Two says: Watch out!"
+    };
 
-  extrasOther.classList.add('hidden');
-  extrasOne.classList.remove('hidden');
-});
+    // POWER BUTTON
+    powerBtn.addEventListener('click', () => {
+      isMonitorOn = !isMonitorOn;
+      monitorOn.classList.toggle('hidden', !isMonitorOn);
+      input.disabled = !isMonitorOn;
+      redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
 
-  </script>
+      if (!isMonitorOn) {
+        input.value = '';
+        monitorOverlayOne.style.display = 'none';
+        monitorOverlayOther.style.display = 'none';
+        monitorOverlayOne.textContent = '';
+        monitorOverlayOther.textContent = '';
+        output.textContent = '';
+      } else {
+        if (nameplateOther.classList.contains('hidden')) {
+          monitorOverlayOne.style.display = 'block';
+        } else {
+          monitorOverlayOther.style.display = 'block';
+        }
+      }
+    });
 
-<!-- POP UPS! -->
-  
-  <script>
- function showPopup(elementId) {
-  // Remove any existing popup first
-  const existingPopup = document.getElementById('current-popup');
-  if (existingPopup) existingPopup.remove();
+    // SUBMIT BUTTON
+    redBtn.addEventListener('click', () => {
+      if (!isMonitorOn) return;
+      const userText = input.value.trim().toLowerCase();
+      if (!userText) return;
 
-  const popupSrc = `assets/shared/${elementId}-popup.png`;
-  console.log('Loading popup:', popupSrc);
+      redBtn.classList.add('hidden');
+      greenBtn.classList.remove('hidden');
 
-  // Create the popup image
-  const popup = document.createElement('img');
-  popup.id = 'current-popup';
-  popup.src = popupSrc;
+      let outputText = "";
 
-  // Centered positioning
-  popup.style.position = 'fixed'; // fixed so it ignores parent
-  popup.style.top = '30%';
-  popup.style.left = '30%';
-  popup.style.transform = 'translate(-30%, -30%)'; // truly center
-  popup.style.zIndex = '600';
-  popup.style.width = '30vw'; // adjust as needed
-  popup.style.height = 'auto';
-  popup.style.cursor = 'pointer';
+      if (nameplateOther.classList.contains('hidden')) {
+        outputText = deskOneResponses[userText] || "Desk One: Unknown command";
+        monitorOverlayOne.style.display = 'block';
+        monitorOverlayOne.textContent = outputText;
+      } else {
+        outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
+        monitorOverlayOther.style.display = 'block';
+        monitorOverlayOther.textContent = outputText;
+      }
 
-  // Optional: add drop shadow to make it stand out
-  popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+      setTimeout(() => {
+        greenBtn.classList.add('hidden');
+        redBtn.classList.remove('hidden');
+      }, 500);
 
-  // Close popup on click
-  popup.addEventListener('click', () => {
-    popup.remove();
-  });
+      input.value = '';
+    });
 
-  // Add popup to scene
-  document.body.appendChild(popup); // use body since it's fixed
-}
+    // NAMEPLATE TOGGLE
+    nameplateOne.addEventListener('click', () => {
+      nameplateOne.classList.add('hidden');
+      nameplateOther.classList.remove('hidden');
+      extrasOne.classList.add('hidden');
+      extrasOther.classList.remove('hidden');
 
+      monitorOverlayOne.style.display = 'none';
+      monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
+    });
 
-    //MAY NEED TO SPLIT...? 
+    nameplateOther.addEventListener('click', () => {
+      nameplateOther.classList.add('hidden');
+      nameplateOne.classList.remove('hidden');
+      extrasOther.classList.add('hidden');
+      extrasOne.classList.remove('hidden');
 
-    // List all interactive elements
-const interactiveElements = [
-  'rock', 'books', 'drawer-clickable-one',
-  'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
-];
+      monitorOverlayOther.style.display = 'none';
+      monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
+    });
 
-interactiveElements.forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
+    // POPUPS
+    function showPopup(elementId) {
+      const existingPopup = document.getElementById('current-popup');
+      if (existingPopup) existingPopup.remove();
+      const popupSrc = `assets/shared/${elementId}-popup.png`;
 
-  el.addEventListener('click', () => {
-    // Only show pop-up if this element's desk is active
-    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
-    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
-
-    showPopup(id);
-  });
-});
-
-    
-    
-  </script>
-  
-<!-- trying this in its own script -->
-
-  <script>// Grab overlays
-const monitorOverlayOne = document.getElementById('monitor-overlay-one');
-const monitorOverlayOther = document.getElementById('monitor-overlay-other');
-
-// Modify submit button logic
-redBtn.addEventListener('click', () => {
-  if (!isMonitorOn) return;
-  const userText = input.value.trim().toLowerCase(); // lowercase for easier matching
-  if (!userText) return;
-
-  redBtn.classList.add('hidden');
-  greenBtn.classList.remove('hidden');
-
-  let outputText = "";
-
-  if (nameplateOther.classList.contains('hidden')) {
-    // One is active
-    outputText = deskOneResponses[userText] || "Desk One: Unknown command";
-    monitorOverlayOne.style.display = 'block';
-    monitorOverlayOne.textContent = outputText;
-  } else {
-    // Other is active
-    outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
-    monitorOverlayOther.style.display = 'block';
-    monitorOverlayOther.textContent = outputText;
-  }
-
-  setTimeout(() => {
-    greenBtn.classList.add('hidden');
-    redBtn.classList.remove('hidden');
-  }, 500);
-
-  input.value = '';
-});
-
-
-// Modify power button logic to hide overlays when off
-powerBtn.addEventListener('click', () => {
-  isMonitorOn = !isMonitorOn;
-  monitorOn.classList.toggle('hidden', !isMonitorOn);
-  input.disabled = !isMonitorOn;
-  redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
-
-  if (!isMonitorOn) {
-    input.value = '';
-    monitorOverlayOne.style.display = 'none';
-    monitorOverlayOther.style.display = 'none';
-    monitorOverlayOne.textContent = '';
-    monitorOverlayOther.textContent = '';
-    output.textContent = '';
-  } else {
-    // Show overlay for active nameplate
-    if (nameplateOther.classList.contains('hidden')) {
-      monitorOverlayOne.style.display = 'block';
-    } else {
-      monitorOverlayOther.style.display = 'block';
+      const popup = document.createElement('img');
+      popup.id = 'current-popup';
+      popup.src = popupSrc;
+      popup.style.position = 'fixed';
+      popup.style.top = '30%';
+      popup.style.left = '30%';
+      popup.style.transform = 'translate(-30%, -30%)';
+      popup.style.zIndex = '600';
+      popup.style.width = '30vw';
+      popup.style.height = 'auto';
+      popup.style.cursor = 'pointer';
+      popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+      popup.addEventListener('click', () => popup.remove());
+      document.body.appendChild(popup);
     }
-  }
-});
 
-// Modify nameplate toggles to switch overlays
-nameplateOne.addEventListener('click', () => {
-  nameplateOne.classList.add('hidden');
-  nameplateOther.classList.remove('hidden');
+    const interactiveElements = [
+      'rock', 'books', 'drawer-clickable-one',
+      'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
+    ];
 
-  extrasOne.classList.add('hidden');
-  extrasOther.classList.remove('hidden');
+    interactiveElements.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', () => {
+        if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
+        if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
+        showPopup(id);
+      });
+    });
 
-  monitorOverlayOne.style.display = 'none';
-  monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
-});
-
-nameplateOther.addEventListener('click', () => {
-  nameplateOther.classList.add('hidden');
-  nameplateOne.classList.remove('hidden');
-
-  extrasOther.classList.add('hidden');
-  extrasOne.classList.remove('hidden');
-
-  monitorOverlayOther.style.display = 'none';
-  monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
-});
-</script>
-  
+  });
+  </script>
 </body>
 </html>
