@@ -123,26 +123,23 @@
     });
 
     // SUBMIT BUTTON
-   redBtn.addEventListener('click', () => {
+  redBtn.addEventListener('click', () => {
   if (!isMonitorOn) return;
 
-  let userText = input.value.trim().toLowerCase(); // trim spaces & lowercase
+  let typed = input.value.trim();
+  if (!typed) typed = "(nothing)";
 
   redBtn.classList.add('hidden');
   greenBtn.classList.remove('hidden');
 
-  let outputText = "";
-
   if (nameplateOther.classList.contains('hidden')) {
-    // One is active
-    outputText = deskOneResponses[userText] || "Desk One: " + input.value.trim();
+    // Desk One is active
     monitorOverlayOne.style.display = 'block';
-    monitorOverlayOne.textContent = outputText;
+    monitorOverlayOne.textContent = deskOneResponses[typed.toLowerCase()] || typed;
   } else {
-    // Other is active
-    outputText = deskOtherResponses[userText] || "Desk Two: " + input.value.trim();
+    // Desk Other is active
     monitorOverlayOther.style.display = 'block';
-    monitorOverlayOther.textContent = outputText;
+    monitorOverlayOther.textContent = deskOtherResponses[typed.toLowerCase()] || typed;
   }
 
   setTimeout(() => {
@@ -152,6 +149,7 @@
 
   input.value = '';
 });
+
 
 
     // NAMEPLATE TOGGLE
