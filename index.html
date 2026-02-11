@@ -222,6 +222,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- POWER BUTTON ---
   powerBtn.addEventListener('click', () => {
+
+    //this is the thunder when u click the power button can we tell im tired
+    
+thunderAudio.play().then(() => {
+  thunderAudio.pause();
+  thunderAudio.currentTime = 0;
+}).catch(() => {});
+
+    
     isMonitorOn = !isMonitorOn;
     monitorOn.classList.toggle('hidden', !isMonitorOn);
     input.disabled = !isMonitorOn;
@@ -336,6 +345,55 @@ redBtn.addEventListener('click', () => {
   });
 
 });
+
+//LIGHTNING SHIT PRAY TO GAWD THIS WORKS FUUUHHHK//
+  const backgroundOther = document.getElementById('background-other');
+const thunderAudio = document.getElementById('thunder-audio');
+
+  //the actual lightning shit oh my god my fingers and toes are crossed 
+
+  function triggerLightning() {
+  if (!backgroundOther) return;
+
+  // Only trigger if Other desk is active
+  if (nameplateOther.classList.contains('hidden')) return;
+
+  // Flash
+  backgroundOther.classList.add('lightning-flash');
+
+  setTimeout(() => {
+    backgroundOther.classList.remove('lightning-flash');
+  }, 250);
+
+  // 60% chance thunder plays
+  if (Math.random() < 0.6) {
+    const delay = Math.random() * 2000 + 500; // 0.5s–2.5s delay
+
+    setTimeout(() => {
+      thunderAudio.volume = Math.random() * 0.3 + 0.2; // subtle volume
+      thunderAudio.currentTime = 0;
+      thunderAudio.play().catch(() => {});
+    }, delay);
+  }
+}
+
+  function startStorm() {
+  function scheduleNext() {
+    const randomDelay = Math.random() * 5000 + 3000; // 3–8 seconds
+    setTimeout(() => {
+      triggerLightning();
+      scheduleNext();
+    }, randomDelay);
+  }
+
+  scheduleNext();
+}
+
+startStorm();
+
+  
+
+  
 </script>
 </body>
 </html>
