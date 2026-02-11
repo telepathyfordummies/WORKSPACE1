@@ -71,7 +71,7 @@ body {
 }
 
 #power-btn:hover {
-  background-color: #7ac8ff;  /* lighter gray on hover */
+  background-color: #7ac8ff;  /* lighter blue on hover, maybe fiddle with this later */
 }
 
 /* Monitor placeholder */
@@ -227,12 +227,12 @@ body {
 
 .monitor-overlay {
   position: absolute;
-  top: 495px;   /* adjust to fit inside monitor-on.png */
-  left: 240px;  /* adjust to fit inside monitor-on.png */
-  width: 500px;  /* match monitor size */
-  height: 450px; /* match monitor size */
-  background: rgba(0, 0, 0, 0.0); /* semi-transparent black */
-  color: #000;  /* green text like old monitor */
+  top: 495px;   
+  left: 240px;  /* adjusted to fit inside monitor-on.png */
+  width: 500px;  /* match monitor size ish.. */
+  height: 450px; /* match monitor size also ish... close enough */
+  background: rgba(0, 0, 0, 0.0); /* transparent */
+  color: #000;  /* black text. do you like the black text? maybe fiddle with later... */
   font-family: Roboto; monospace;
   font-size: 50px;
   font-family: 'Roboto Mono', monospace;
