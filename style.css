@@ -1,5 +1,3 @@
-/* DEAR READER, IF YOU'RE IN HERE, THERE'S LITERALLY NOTHING HERE FOR YOU UNLESS YOU LIKE SPECIFIC NOTES ON WHAT DOES WHAT BECAUSE THIS IS GOING TO BE A FUTURE ME PROBLEM UNFORTUNATELY. ALSO, GET OUT OF MY CODE. */
-/*DEAR SELF, DO NOT FUCK WITH ANY OF THE Z INDEX SHIT EVER. JUST DON'T!!! DO IT!!!! DON'T FUCKING DO IT TO YOURSELF1!! */
 body {
   margin: 0;
   background: #000;
@@ -36,7 +34,7 @@ body {
 
 #real-input {
   position: absolute;
-  top: 1319px;       /* manually adjust to match input-bar vertical position */ /*PAIN IN MY FUCKING ASS. DEAR FUTURE YOU, ALL OF THIS WAS A PAIN IN YOUR ASS. DONT FUCK IT UP*/
+  top: 1319px;       /* manually adjust to match input-bar vertical position */
   left: 460px;      /* manually adjust to match input-bar horizontal position */
   width: 355px;     /* match input-bar width */
   height: 45px;     /* match input-bar height */
@@ -44,10 +42,7 @@ body {
   transform-origin: top left;  /* rotate around top-left corner */
   border: none;
   background-color: rgba(173,216,230,0.0);  /* semi-transparent for alignment */
-  font-size: 20px;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 700; /* bold */ /* DID YOU KNOW THIS IS HOW YOU BOLD?? NOW YOU DO! P.S. 500 IS REGULAR, 500 IS MEDIUM. */
-   text-transform: uppercase;
+  font-size: 16px;
   padding: 5px 10px;
  z-index: 30;   
   color: black;
@@ -55,7 +50,7 @@ body {
 
 #power-btn {
   position: absolute;
-  top: 1370px;        /* adjust to where button should be -- TLDR DO IT IN THE INSPECT -- STYLE OPTION THAT SHIT WAS SO MUCH EASIER */
+  top: 1370px;        /* adjust to where button should be */
   left: 320px;
   width: 60px;
   height: 60px;
@@ -71,7 +66,7 @@ body {
 }
 
 #power-btn:hover {
-  background-color: #7ac8ff;  /* lighter blue on hover, maybe fiddle with this later */
+  background-color: #7ac8ff;  /* lighter gray on hover */
 }
 
 /* Monitor placeholder */
@@ -82,7 +77,7 @@ body {
   width: 600px;
   height: 550px;
   background: transparent;  
-  z-index: 500;      
+  z-index: 500;      /* behind the button */
 }
 
 .hidden {
