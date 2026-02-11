@@ -347,10 +347,12 @@ let stormTimeout;
 
 function triggerLightning() {
   // Only run if monitor is on and Desk Other is active
-  if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
+  if (!isMonitorOn) return;
+  if (nameplateOther.classList.contains('hidden')) return; // Desk Other not active
   if (!backgroundOther) return;
 
-  // Flash
+  // Show background temporarily for flash
+  backgroundOther.style.display = 'block'; // Make sure it’s visible
   backgroundOther.classList.add('lightning-flash');
 
   // Thunder simultaneously (60% chance)
@@ -360,51 +362,46 @@ function triggerLightning() {
     thunderAudio.play().catch(() => {});
   }
 
-  // Remove flash after 250ms
+  // Remove flash and hide background after 250ms
   setTimeout(() => {
     backgroundOther.classList.remove('lightning-flash');
+    backgroundOther.style.display = 'none'; // hide when flash ends
   }, 250);
 }
 
 function scheduleStorm() {
-  // Stop any previous storm
   if (stormTimeout) clearTimeout(stormTimeout);
 
-  // Only schedule if Desk Other is active
+  // Only schedule if Desk Other is active and monitor is on
   if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
 
-  // Random delay 15–20s
-  const randomDelay = Math.random() * 5000 + 15000;
+  const randomDelay = Math.random() * 5000 + 15000; // 15–20 seconds
 
   stormTimeout = setTimeout(() => {
-    // Double-check if Desk Other is still active before flashing
+    // double-check Desk Other visibility before triggering
     if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
 
     triggerLightning();
-    scheduleStorm(); // schedule next flash
+    scheduleStorm();
   }, randomDelay);
 }
 
 // Start/stop storm based on desk toggle
 function updateStorm() {
-  // Stop storm if Desk Other is hidden or monitor is off
   if (!isMonitorOn || nameplateOther.classList.contains('hidden')) {
     if (stormTimeout) clearTimeout(stormTimeout);
   } else {
-    // Start storm if Other desk is active
     scheduleStorm();
   }
 }
 
-// Run storm initially
+// Initially start storm
 updateStorm();
 
-// Run storm whenever desk toggles
+// Restart storm whenever desks toggle
 nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
 
-
-});
 </script>
 </body>
 </html>
