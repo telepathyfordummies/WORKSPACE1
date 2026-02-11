@@ -143,11 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nameplateOther.classList.contains('hidden')) {
       // Desk One active
       monitorOverlayOne.style.display = 'block';
-      monitorOverlayOne.textContent = deskOneResponses[typed.toLowerCase()] || typed;
+      const response = deskOneResponses[typed.toLowerCase()];
+
+monitorOverlayOne.textContent =
+  response ? response : "[INPUT NOT FOUND.]";
+
     } else {
       // Desk Other active
       monitorOverlayOther.style.display = 'block';
-      monitorOverlayOther.textContent = deskOtherResponses[typed.toLowerCase()] || typed;
+      const response = deskOtherResponses[typed.toLowerCase()];
+
+monitorOverlayOther.textContent =
+  response ? response : "[INPUT NOT FOUND.]";
+
     }
 
     setTimeout(() => {
