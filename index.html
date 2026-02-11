@@ -76,12 +76,12 @@
 <!-- JS -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // --- DOM ELEMENTS ---
   const powerBtn = document.getElementById('power-btn');
   const monitorOn = document.getElementById('monitor-on');
   const input = document.getElementById('real-input');
   const redBtn = document.getElementById('submit-red');
   const greenBtn = document.getElementById('submit-green');
-  const output = document.getElementById('output');
 
   const nameplateOne = document.getElementById('nameplate-one');
   const nameplateOther = document.getElementById('nameplate-other');
@@ -91,7 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const monitorOverlayOne = document.getElementById('monitor-overlay-one');
   const monitorOverlayOther = document.getElementById('monitor-overlay-other');
 
+  const backgroundOther = document.getElementById('background-other');
+  const thunderAudio = new Audio('assets/audio/thunder.mp3');
+  thunderAudio.volume = 0.3;
+
   let isMonitorOn = false;
+
 
   // HELLOOOOO YOUR RESPONSES GO HERE!!! IF YOU ARE READING THIS AND YOU ARE NOT ME, TELEPATHYFORDUMMIES, GET THE FUCK OUT!!!!! YOU'RE CHEATING!!! I KNOW WHAT YOU ARE!!!!!!!
   const deskOneResponses = {
@@ -220,71 +225,60 @@ document.addEventListener('DOMContentLoaded', () => {
     "mcgriddles": "I swear theres a st0ry behind it."
   };
 
-  // --- POWER BUTTON ---
+ --- POWER BUTTON ---
   powerBtn.addEventListener('click', () => {
-
-    //this is the thunder when u click the power button can we tell im tired
-    
-thunderAudio.play().then(() => {
-  thunderAudio.pause();
-  thunderAudio.currentTime = 0;
-}).catch(() => {});
-
-    
     isMonitorOn = !isMonitorOn;
     monitorOn.classList.toggle('hidden', !isMonitorOn);
     input.disabled = !isMonitorOn;
     redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
 
+    // reset overlays when turning off
     if (!isMonitorOn) {
-      // Reset overlays and monitor
       input.value = '';
       monitorOverlayOne.style.display = 'none';
       monitorOverlayOther.style.display = 'none';
       monitorOverlayOne.textContent = '';
       monitorOverlayOther.textContent = '';
-      output.textContent = '';
     } else {
-      // Show overlay for active desk
+      // show overlay for active desk
       if (nameplateOther.classList.contains('hidden')) {
-        monitorOverlayOne.style.display = 'block';
+        monitorOverlayOne.style.display = 'flex';
       } else {
-        monitorOverlayOther.style.display = 'block';
+        monitorOverlayOther.style.display = 'flex';
       }
     }
+
+    // optional: little thunder effect when turning on
+    thunderAudio.currentTime = 0;
+    thunderAudio.play().catch(() => {});
   });
 
- // --- SUBMIT BUTTON ---
-redBtn.addEventListener('click', () => {
-  if (!isMonitorOn) return;
+  // --- SUBMIT BUTTON ---
+  redBtn.addEventListener('click', () => {
+    if (!isMonitorOn) return;
 
-  const normalized = input.value.trim().toLowerCase();
+    const normalized = input.value.trim().toLowerCase();
 
-  redBtn.classList.add('hidden');
-  greenBtn.classList.remove('hidden');
+    redBtn.classList.add('hidden');
+    greenBtn.classList.remove('hidden');
 
-  if (nameplateOther.classList.contains('hidden')) {
-    // Desk One active
-    monitorOverlayOne.style.display = 'flex';
+    if (nameplateOther.classList.contains('hidden')) {
+      // Desk One active
+      monitorOverlayOne.style.display = 'flex';
+      monitorOverlayOne.textContent = deskOneResponses[normalized] || "[INPUT NOT FOUND.]";
+    } else {
+      // Desk Other active
+      monitorOverlayOther.style.display = 'flex';
+      monitorOverlayOther.textContent = deskOtherResponses[normalized] || "[INPUT NOT FOUND.]";
+    }
 
-    const response = deskOneResponses[normalized];
-    monitorOverlayOne.textContent = response || "[INPUT NOT FOUND.]";
+    setTimeout(() => {
+      redBtn.classList.remove('hidden');
+      greenBtn.classList.add('hidden');
+    }, 500);
 
-  } else {
-    // Desk Other active
-    monitorOverlayOther.style.display = 'flex';
-
-    const response = deskOtherResponses[normalized];
-    monitorOverlayOther.textContent = response || "[INPUT NOT FOUND.]";
-  }
-
-  setTimeout(() => {
-    redBtn.classList.remove('hidden');
-    greenBtn.classList.add('hidden');
-  }, 500);
-
-  input.value = '';
-});
+    input.value = '';
+  });
 
   // --- NAMEPLATE TOGGLE ---
   nameplateOne.addEventListener('click', () => {
@@ -294,7 +288,7 @@ redBtn.addEventListener('click', () => {
     extrasOther.classList.remove('hidden');
 
     monitorOverlayOne.style.display = 'none';
-    monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
+    monitorOverlayOther.style.display = isMonitorOn ? 'flex' : 'none';
   });
 
   nameplateOther.addEventListener('click', () => {
@@ -304,18 +298,17 @@ redBtn.addEventListener('click', () => {
     extrasOne.classList.remove('hidden');
 
     monitorOverlayOther.style.display = 'none';
-    monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
+    monitorOverlayOne.style.display = isMonitorOn ? 'flex' : 'none';
   });
 
   // --- POPUPS ---
   function showPopup(elementId) {
     const existingPopup = document.getElementById('current-popup');
     if (existingPopup) existingPopup.remove();
-    const popupSrc = `assets/shared/${elementId}-popup.png`;
 
     const popup = document.createElement('img');
     popup.id = 'current-popup';
-    popup.src = popupSrc;
+    popup.src = `assets/shared/${elementId}-popup.png`;
     popup.style.position = 'fixed';
     popup.style.top = '30%';
     popup.style.left = '30%';
@@ -344,56 +337,40 @@ redBtn.addEventListener('click', () => {
     });
   });
 
-});
-
-//LIGHTNING SHIT PRAY TO GAWD THIS WORKS FUUUHHHK//
-  const backgroundOther = document.getElementById('background-other');
-const thunderAudio = document.getElementById('thunder-audio');
-
-  //the actual lightning shit oh my god my fingers and toes are crossed 
-
+  // --- LIGHTNING STORM ---
   function triggerLightning() {
-  if (!backgroundOther) return;
+    if (!backgroundOther || !isMonitorOn) return;
+    if (nameplateOther.classList.contains('hidden')) return;
 
-  // Only trigger if Other desk is active
-  if (nameplateOther.classList.contains('hidden')) return;
+    // flash
+    backgroundOther.classList.add('lightning-flash');
+    setTimeout(() => backgroundOther.classList.remove('lightning-flash'), 250);
 
-  // Flash
-  backgroundOther.classList.add('lightning-flash');
-
-  setTimeout(() => {
-    backgroundOther.classList.remove('lightning-flash');
-  }, 250);
-
-  // 60% chance thunder plays
-  if (Math.random() < 0.6) {
-    const delay = Math.random() * 2000 + 500; // 0.5s–2.5s delay
-
-    setTimeout(() => {
-      thunderAudio.volume = Math.random() * 0.3 + 0.2; // subtle volume
-      thunderAudio.currentTime = 0;
-      thunderAudio.play().catch(() => {});
-    }, delay);
+    // thunder sound
+    if (Math.random() < 0.6) {
+      const delay = Math.random() * 2000 + 500;
+      setTimeout(() => {
+        thunderAudio.volume = Math.random() * 0.3 + 0.2;
+        thunderAudio.currentTime = 0;
+        thunderAudio.play().catch(() => {});
+      }, delay);
+    }
   }
-}
 
   function startStorm() {
-  function scheduleNext() {
-    const randomDelay = Math.random() * 5000 + 3000; // 3–8 seconds
-    setTimeout(() => {
-      triggerLightning();
-      scheduleNext();
-    }, randomDelay);
+    function scheduleNext() {
+      const randomDelay = Math.random() * 5000 + 3000;
+      setTimeout(() => {
+        triggerLightning();
+        scheduleNext();
+      }, randomDelay);
+    }
+    scheduleNext();
   }
 
-  scheduleNext();
-}
+  startStorm();
 
-startStorm();
-
-  
-
-  
+});
 </script>
 </body>
 </html>
