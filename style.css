@@ -55,7 +55,7 @@ body {
 
 #power-btn {
   position: absolute;
-  top: 1370px;        /* adjust to where button should be */
+  top: 1370px;        /* adjust to where button should be -- TLDR DO IT IN THE INSPECT -- STYLE OPTION THAT SHIT WAS SO MUCH EASIER */
   left: 320px;
   width: 60px;
   height: 60px;
