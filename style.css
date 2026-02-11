@@ -45,7 +45,7 @@ body {
   background-color: rgba(173,216,230,0.0);  /* semi-transparent for alignment */
   font-size: 16px;
   padding: 5px 10px;
-  z-index: 11;      /* sits above input-bar image */
+ z-index: 30;   
   color: black;
 }
 
