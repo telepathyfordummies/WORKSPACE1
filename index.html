@@ -123,33 +123,36 @@
     });
 
     // SUBMIT BUTTON
-    redBtn.addEventListener('click', () => {
-      if (!isMonitorOn) return;
-      const userText = input.value.trim().toLowerCase();
-      if (!userText) return;
+   redBtn.addEventListener('click', () => {
+  if (!isMonitorOn) return;
 
-      redBtn.classList.add('hidden');
-      greenBtn.classList.remove('hidden');
+  let userText = input.value.trim().toLowerCase(); // trim spaces & lowercase
 
-      let outputText = "";
+  redBtn.classList.add('hidden');
+  greenBtn.classList.remove('hidden');
 
-      if (nameplateOther.classList.contains('hidden')) {
-        outputText = deskOneResponses[userText] || "Desk One: Unknown command";
-        monitorOverlayOne.style.display = 'block';
-        monitorOverlayOne.textContent = outputText;
-      } else {
-        outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
-        monitorOverlayOther.style.display = 'block';
-        monitorOverlayOther.textContent = outputText;
-      }
+  let outputText = "";
 
-      setTimeout(() => {
-        greenBtn.classList.add('hidden');
-        redBtn.classList.remove('hidden');
-      }, 500);
+  if (nameplateOther.classList.contains('hidden')) {
+    // One is active
+    outputText = deskOneResponses[userText] || "Desk One: " + input.value.trim();
+    monitorOverlayOne.style.display = 'block';
+    monitorOverlayOne.textContent = outputText;
+  } else {
+    // Other is active
+    outputText = deskOtherResponses[userText] || "Desk Two: " + input.value.trim();
+    monitorOverlayOther.style.display = 'block';
+    monitorOverlayOther.textContent = outputText;
+  }
 
-      input.value = '';
-    });
+  setTimeout(() => {
+    greenBtn.classList.add('hidden');
+    redBtn.classList.remove('hidden');
+  }, 500);
+
+  input.value = '';
+});
+
 
     // NAMEPLATE TOGGLE
     nameplateOne.addEventListener('click', () => {
