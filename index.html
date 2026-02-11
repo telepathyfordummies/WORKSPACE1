@@ -149,7 +149,30 @@ nameplateOther.addEventListener('click', () => {
   nameplateOne.classList.remove('hidden');
 });
 </script>
+
+<!--EXTRAS SCRIPT-->
   
+  <script>
+    const extrasOne = document.getElementById('extras-one');
+const extrasOther = document.getElementById('extras-other');
+
+nameplateOne.addEventListener('click', () => {
+  nameplateOne.classList.add('hidden');
+  nameplateOther.classList.remove('hidden');
+
+  extrasOne.classList.add('hidden');
+  extrasOther.classList.remove('hidden');
+});
+
+nameplateOther.addEventListener('click', () => {
+  nameplateOther.classList.add('hidden');
+  nameplateOne.classList.remove('hidden');
+
+  extrasOther.classList.add('hidden');
+  extrasOne.classList.remove('hidden');
+});
+
+  </script>
 
   
 </body>
