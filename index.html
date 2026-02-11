@@ -23,12 +23,13 @@
 
     <!-- MONITOR -->
     <div id="monitor-wrapper">
-      <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
-       <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On" class="hidden">
-      <div id="monitor-screen" class="off">
-        <div id="output"></div>
-      </div>
-    </div>
+  <img id="monitor-shell" src="assets/shared/monitor.png" alt="Monitor">
+  <img id="monitor-on" src="assets/shared/monitor-on.png" alt="Monitor On">
+  
+  <!-- This is the new overlay container -->
+  <div id="monitor-output"></div>
+</div>
+
     
     <!-- INPUT -->
 
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('real-input');
   const redBtn = document.getElementById('submit-red');
   const greenBtn = document.getElementById('submit-green');
-  const output = document.getElementById('output');
+ const output = document.getElementById('monitor-output');
 
   // Track monitor state globally
   let isMonitorOn = false;
