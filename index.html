@@ -119,27 +119,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Submit button logic
   redBtn.addEventListener('click', () => {
-    if (!isMonitorOn) return; // prevent clicking when monitor is off
+  if (!isMonitorOn) return;
+  const userText = input.value.trim().toLowerCase(); // lowercase for easier matching
+  if (!userText) return;
 
-    const userText = input.value.trim();
-    if (!userText) return;
+  redBtn.classList.add('hidden');
+  greenBtn.classList.remove('hidden');
 
-    // flash green
-    redBtn.classList.add('hidden');
-    greenBtn.classList.remove('hidden');
+  let outputText = "";
 
-    // show output
-    output.textContent = `You typed: ${userText}`;
+  if (nameplateOther.classList.contains('hidden')) {
+    // One is active
+    outputText = deskOneResponses[userText] || "Desk One: Unknown command";
+    monitorOverlayOne.style.display = 'block';
+    monitorOverlayOne.textContent = outputText;
+  } else {
+    // Other is active
+    outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
+    monitorOverlayOther.style.display = 'block';
+    monitorOverlayOther.textContent = outputText;
+  }
 
-    setTimeout(() => {
-      greenBtn.classList.add('hidden');
-      redBtn.classList.remove('hidden');
-    }, 500);
+  setTimeout(() => {
+    greenBtn.classList.add('hidden');
+    redBtn.classList.remove('hidden');
+  }, 500);
 
-    // clear input
-    input.value = '';
-  });
+  input.value = '';
 });
+
 </script>
 
 <!-- NAMEPLATE SCRIPT -->
@@ -255,21 +263,24 @@ const monitorOverlayOther = document.getElementById('monitor-overlay-other');
 // Modify submit button logic
 redBtn.addEventListener('click', () => {
   if (!isMonitorOn) return;
-  const userText = input.value.trim();
+  const userText = input.value.trim().toLowerCase(); // lowercase for easier matching
   if (!userText) return;
 
   redBtn.classList.add('hidden');
   greenBtn.classList.remove('hidden');
 
-  // Send text to correct overlay
+  let outputText = "";
+
   if (nameplateOther.classList.contains('hidden')) {
     // One is active
+    outputText = deskOneResponses[userText] || "Desk One: Unknown command";
     monitorOverlayOne.style.display = 'block';
-    monitorOverlayOne.textContent = userText;
+    monitorOverlayOne.textContent = outputText;
   } else {
     // Other is active
+    outputText = deskOtherResponses[userText] || "Desk Two: Unknown command";
     monitorOverlayOther.style.display = 'block';
-    monitorOverlayOther.textContent = userText;
+    monitorOverlayOther.textContent = outputText;
   }
 
   setTimeout(() => {
@@ -279,6 +290,7 @@ redBtn.addEventListener('click', () => {
 
   input.value = '';
 });
+
 
 // Modify power button logic to hide overlays when off
 powerBtn.addEventListener('click', () => {
