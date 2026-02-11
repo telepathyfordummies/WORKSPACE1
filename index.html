@@ -174,6 +174,65 @@ nameplateOther.addEventListener('click', () => {
 
   </script>
 
+<!-- POP UPS! -->
+  
+  <script>
+    // Function to show a pop-up for a clicked element
+function showPopup(elementId) {
+  // Remove any existing popup first
+  const existingPopup = document.getElementById('current-popup');
+  if (existingPopup) existingPopup.remove();
+
+  // Build popup image path from element ID
+  const popupSrc = `assets/shared/${elementId}-popup.png`;
+
+  // Create the popup image element
+  const popup = document.createElement('img');
+  popup.id = 'current-popup';
+  popup.src = popupSrc;
+  popup.style.position = 'absolute';
+  popup.style.top = '200px'; // adjust to position on screen
+  popup.style.left = '500px'; // adjust as needed
+  popup.style.zIndex = '600'; // above all other elements
+  popup.style.width = '400px'; // optional sizing
+  popup.style.height = 'auto';
+  popup.style.cursor = 'pointer';
+
+  // Close the popup when clicked
+  popup.addEventListener('click', () => {
+    popup.remove();
+  });
+
+  // Add popup to the scene
+  document.getElementById('scene').appendChild(popup);
+}
+
+    //MAY NEED TO SPLIT...? 
+
+    // List all interactive elements
+const interactiveElements = [
+  'rock', 'books', 'drawer-clickable-one',
+  'crystal-ball', 'dice', 'pendant', 'hummels', 'humbles2', 'drawer-clickable-other'
+];
+
+interactiveElements.forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  el.addEventListener('click', () => {
+    // Only show pop-up if this element's desk is active
+    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
+    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
+
+    showPopup(id);
+  });
+});
+
+    
+    
+  </script>
+  
+
   
 </body>
 </html>
