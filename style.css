@@ -223,3 +223,28 @@ body {
   display: block;
   object-fit: contain;
 }
+
+.monitor-overlay {
+  position: absolute;
+  top: 495px;   /* adjust to fit inside monitor-on.png */
+  left: 240px;  /* adjust to fit inside monitor-on.png */
+  width: 500px;  /* match monitor size */
+  height: 450px; /* match monitor size */
+  background: rgba(0, 0, 0, 0.0); /* semi-transparent black */
+  color: #000;  /* green text like old monitor */
+  font-family: Roboto; monospace;
+  font-size: 50px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700; /* bold */
+   text-transform: uppercase;
+  padding: 10px;
+  overflow-y: auto;
+  display: none; /* start hidden */
+  z-index: 600;  /* above monitor-on.png */
+  display: flex;
+  align-items: center;    /* vertical center */
+  justify-content: center; /* horizontal center */
+  text-align: center;     /* center text if multiple lines */
+  padding: 20px;          /* optional padding inside overlay */
+  overflow-wrap: break-word; /* wrap long text */
+}
