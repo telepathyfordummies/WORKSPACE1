@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMonitorOn) return;
 
     let typed = input.value.trim();
-    if (!typed) typed = "(nothing)";
+    if (!typed) typed = "[INPUT NOT FOUND.]";
 
     redBtn.classList.add('hidden');
     greenBtn.classList.remove('hidden');
