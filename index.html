@@ -264,28 +264,6 @@ function startAmbient() {
   input.disabled = !isMonitorOn;
   redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
 
-  // reset overlays when turning off
-  if (!isMonitorOn) {
-    input.value = '';
-    monitorOverlayOne.style.display = 'none';
-    monitorOverlayOther.style.display = 'none';
-    monitorOverlayOne.textContent = '';
-    monitorOverlayOther.textContent = '';
-  } else {
-    // show overlay for active desk
-    if (nameplateOther.classList.contains('hidden')) {
-      monitorOverlayOne.style.display = 'flex';
-    } else {
-      monitorOverlayOther.style.display = 'flex';
-    }
-  }
-
-  // optional: little thunder effect when turning on
-  thunderAudio.currentTime = 0;
-  thunderAudio.play().catch(() => {});
-});
-
-
     // reset overlays when turning off
     if (!isMonitorOn) {
       input.value = '';
