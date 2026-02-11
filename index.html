@@ -406,6 +406,42 @@ updateStorm();
 nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
 
+  // --- AMBIENT AUDIO ---
+const ambientOne = new Audio('assets/audio/libets-delay.mp3');
+const ambientOther = new Audio('assets/audio/black-ice-cave.mp3');
+
+ambientOne.loop = true;
+ambientOther.loop = true;
+
+// Initial volumes
+ambientOne.volume = 0.5; // Desk One audible
+ambientOther.volume = 0; // Desk Other muted
+
+// Start playback immediately
+ambientOne.play().catch(() => {});
+ambientOther.play().catch(() => {});
+
+// Function to update volumes based on active desk
+function updateAmbientVolumes() {
+  if (nameplateOther.classList.contains('hidden')) {
+    // Desk One active
+    ambientOne.volume = 0.5;
+    ambientOther.volume = 0;
+  } else {
+    // Desk Other active
+    ambientOne.volume = 0;
+    ambientOther.volume = 0.5;
+  }
+}
+
+// Call whenever desks are toggled
+nameplateOne.addEventListener('click', updateAmbientVolumes);
+nameplateOther.addEventListener('click', updateAmbientVolumes);
+
+// Set correct volume initially
+updateAmbientVolumes();
+
+
 
   });
 
