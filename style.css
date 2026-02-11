@@ -225,7 +225,7 @@ body {
 
 .monitor-overlay {
   position: absolute;
-  top: 495px;   
+  top: 480px; 
   left: 240px;  /* adjusted to fit inside monitor-on.png */
   width: 500px;  /* match monitor size ish.. */
   height: 450px; /* match monitor size also ish... close enough */
