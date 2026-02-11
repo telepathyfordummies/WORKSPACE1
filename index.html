@@ -256,14 +256,14 @@ redBtn.addEventListener('click', () => {
 
   if (nameplateOther.classList.contains('hidden')) {
     // Desk One active
-    monitorOverlayOne.style.display = 'block';
+    monitorOverlayOne.style.display = 'flex';
 
     const response = deskOneResponses[normalized];
     monitorOverlayOne.textContent = response || "[INPUT NOT FOUND.]";
 
   } else {
     // Desk Other active
-    monitorOverlayOther.style.display = 'block';
+    monitorOverlayOther.style.display = 'flex';
 
     const response = deskOtherResponses[normalized];
     monitorOverlayOther.textContent = response || "[INPUT NOT FOUND.]";
