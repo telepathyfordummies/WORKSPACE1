@@ -406,27 +406,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   
-  // --- PAGE COLLECT SOUND GOD PLEASE LET THIS WORK ---
-const pageCollectAudio = new Audio('assets/audio/page-collect.mp3');
-pageCollectAudio.volume = 0.4; // adjust volume if needed
-
-// Add sound to interactive elements
-interactiveElements.forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener('click', () => {
-    // Only show popup if desk is active
-    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
-    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
-
-    // Play sound
-    pageCollectAudio.currentTime = 0; // restart if already playing
-    pageCollectAudio.play().catch(() => {});
-
-    // Show popup
-    showPopup(id);
-  });
-});
 
 
   // --- POPUPS ---
@@ -464,6 +443,29 @@ interactiveElements.forEach(id => {
       showPopup(id);
     });
   });
+
+    // --- PAGE COLLECT SOUND GOD PLEASE LET THIS WORK ---
+const pageCollectAudio = new Audio('assets/audio/page-collect.mp3');
+pageCollectAudio.volume = 0.4; // adjust volume if needed
+
+// Add sound to interactive elements
+interactiveElements.forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('click', () => {
+    // Only show popup if desk is active
+    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
+    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
+
+    // Play sound
+    pageCollectAudio.currentTime = 0; // restart if already playing
+    pageCollectAudio.play().catch(() => {});
+
+    // Show popup
+    showPopup(id);
+  });
+});
+
 
 }); 
 </script>
