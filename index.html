@@ -457,6 +457,12 @@ interactiveElements.forEach(id => {
     if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
     if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
 
+      // **Exclude specific elements from playing sound**
+    if (id === 'drawer-clickable-one' || id === 'drawer-clickable-other') {
+      showPopup(id); // still show popup, just no sound
+      return;
+    }
+
     // Play sound
     pageCollectAudio.currentTime = 0; // restart if already playing
     pageCollectAudio.play().catch(() => {});
