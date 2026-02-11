@@ -21,6 +21,10 @@ body {
   z-index: 10
 }
 
+#candle {
+  z-index: 11
+}
+
 #desk {
   z-index: 15
 }
