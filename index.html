@@ -405,61 +405,33 @@ document.addEventListener('DOMContentLoaded', () => {
     updateStorm();
   });
 
-  
 
-
-  // --- POPUPS ---
-  function showPopup(elementId) {
-    const existingPopup = document.getElementById('current-popup');
-    if (existingPopup) existingPopup.remove();
-
-    const popup = document.createElement('img');
-    popup.id = 'current-popup';
-    popup.src = `assets/shared/${elementId}-popup.png`;
-    popup.style.position = 'fixed';
-    popup.style.top = '30%';
-    popup.style.left = '30%';
-    popup.style.transform = 'translate(-30%, -30%)';
-    popup.style.zIndex = '600';
-    popup.style.width = '30vw';
-    popup.style.height = 'auto';
-    popup.style.cursor = 'pointer';
-    popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
-    popup.addEventListener('click', () => popup.remove());
-    document.body.appendChild(popup);
-  }
-
-  const interactiveElements = [
-    'rock', 'books', 'drawer-clickable-one',
-    'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
-  ];
-
-  interactiveElements.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('click', () => {
-      if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
-      if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
-      showPopup(id);
-    });
-  });
-
-    // --- PAGE COLLECT AND DRAWER SOUNDS GOD PLEASE LET THIS WORK ---
+ // --- POPUPS AND SOUNDS PLEASE GOD LET THIS WORK UGHEFWS IM TIRED!!---
 const pageCollectAudio = new Audio('assets/audio/page-collect.mp3');
 pageCollectAudio.volume = 0.4;
 
 const drawerOpenAudio = new Audio('assets/audio/drawer-open.mp3');
 drawerOpenAudio.volume = 0.4;
 
-// --- INTERACTIVE ELEMENTS ---
+const interactiveElements = [
+  'rock', 'books', 'drawer-clickable-one',
+  'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
+];
 
+interactiveElements.forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
 
-    // Play drawer sound only for drawer elements
+  el.addEventListener('click', () => {
+    // Only show popup if the desk is active
+    if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
+    if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
+
+    // Play sound
     if (id === 'drawer-clickable-one' || id === 'drawer-clickable-other') {
       drawerOpenAudio.currentTime = 0;
       drawerOpenAudio.play().catch(() => {});
     } else {
-      // Play page collect sound for everything else
       pageCollectAudio.currentTime = 0;
       pageCollectAudio.play().catch(() => {});
     }
@@ -469,9 +441,6 @@ drawerOpenAudio.volume = 0.4;
   });
 });
 
-
-
-}); 
 </script>
 </body>
 </html>
