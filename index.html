@@ -345,17 +345,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- LIGHTNING STORM ---
 let stormTimeout;
 
+// Ensure backgroundOther is hidden by default
+if (backgroundOther) backgroundOther.style.display = 'none';
+
 function triggerLightning() {
-  // Only run if monitor is on and Desk Other is active
+  // Only trigger if Desk Other is active AND monitor is on
   if (!isMonitorOn) return;
   if (nameplateOther.classList.contains('hidden')) return; // Desk Other not active
   if (!backgroundOther) return;
 
-  // Show background temporarily for flash
-  backgroundOther.style.display = 'block'; // Make sure it’s visible
+  // FLASH: show background temporarily
+  backgroundOther.style.display = 'block';
   backgroundOther.classList.add('lightning-flash');
 
-  // Thunder simultaneously (60% chance)
+  // THUNDER simultaneously (60% chance)
   if (Math.random() < 0.6 && thunderAudio) {
     thunderAudio.volume = Math.random() * 0.5 + 0.3;
     thunderAudio.currentTime = 0;
@@ -365,24 +368,25 @@ function triggerLightning() {
   // Remove flash and hide background after 250ms
   setTimeout(() => {
     backgroundOther.classList.remove('lightning-flash');
-    backgroundOther.style.display = 'none'; // hide when flash ends
+    backgroundOther.style.display = 'none';
   }, 250);
 }
 
 function scheduleStorm() {
+  // Clear previous timeout
   if (stormTimeout) clearTimeout(stormTimeout);
 
-  // Only schedule if Desk Other is active and monitor is on
+  // Only schedule if Desk Other is active AND monitor is on
   if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
 
-  const randomDelay = Math.random() * 5000 + 15000; // 15–20 seconds
+  const randomDelay = Math.random() * 5000 + 15000; // 15–20s
 
   stormTimeout = setTimeout(() => {
-    // double-check Desk Other visibility before triggering
+    // Double-check Desk Other is still active before triggering
     if (!isMonitorOn || nameplateOther.classList.contains('hidden')) return;
 
     triggerLightning();
-    scheduleStorm();
+    scheduleStorm(); // loop
   }, randomDelay);
 }
 
@@ -398,9 +402,10 @@ function updateStorm() {
 // Initially start storm
 updateStorm();
 
-// Restart storm whenever desks toggle
+// Also restart storm whenever desks toggle
 nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
+
 
   });
 
