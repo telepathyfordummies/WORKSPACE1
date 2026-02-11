@@ -115,3 +115,33 @@ body {
 #submit-green.hidden {
   display: none;
 }
+
+ #books {
+  position: absolute;
+  top: 850px;
+  left: 1450px;
+  z-index: 300;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+ #rock {
+  position: absolute;
+  top: 1300px;
+  left: 2000px;
+  z-index: 300;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
+
+#drawer-clickable-one {
+  position: absolute;
+  top: 1100px;
+  left: 1920px;
+  z-index: 300;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
