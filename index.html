@@ -69,148 +69,148 @@
     </div>
   </div>
 
-  <!-- JS -->
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const powerBtn = document.getElementById('power-btn');
-    const monitorOn = document.getElementById('monitor-on');
-    const input = document.getElementById('real-input');
-    const redBtn = document.getElementById('submit-red');
-    const greenBtn = document.getElementById('submit-green');
-    const output = document.getElementById('output');
+<!-- JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const powerBtn = document.getElementById('power-btn');
+  const monitorOn = document.getElementById('monitor-on');
+  const input = document.getElementById('real-input');
+  const redBtn = document.getElementById('submit-red');
+  const greenBtn = document.getElementById('submit-green');
+  const output = document.getElementById('output');
 
-    const nameplateOne = document.getElementById('nameplate-one');
-    const nameplateOther = document.getElementById('nameplate-other');
-    const extrasOne = document.getElementById('extras-one');
-    const extrasOther = document.getElementById('extras-other');
+  const nameplateOne = document.getElementById('nameplate-one');
+  const nameplateOther = document.getElementById('nameplate-other');
+  const extrasOne = document.getElementById('extras-one');
+  const extrasOther = document.getElementById('extras-other');
 
-    const monitorOverlayOne = document.getElementById('monitor-overlay-one');
-    const monitorOverlayOther = document.getElementById('monitor-overlay-other');
+  const monitorOverlayOne = document.getElementById('monitor-overlay-one');
+  const monitorOverlayOther = document.getElementById('monitor-overlay-other');
 
-    let isMonitorOn = false;
+  let isMonitorOn = false;
 
-    // Responses for each desk
-    const deskOneResponses = {
-      "hello": "Desk Number One",
-      "help": "Desk One says: Be careful!"
-    };
-    const deskOtherResponses = {
-      "hello": "Desk Number Two",
-      "help": "Desk Two says: Watch out!"
-    };
+  // Responses for each desk
+  const deskOneResponses = {
+    "hello": "Desk Number One",
+    "help": "Desk One says: Be careful!"
+  };
+  const deskOtherResponses = {
+    "hello": "Desk Number Two",
+    "help": "Desk Two says: Watch out!"
+  };
 
-    // POWER BUTTON
-    powerBtn.addEventListener('click', () => {
-      isMonitorOn = !isMonitorOn;
-      monitorOn.classList.toggle('hidden', !isMonitorOn);
-      input.disabled = !isMonitorOn;
-      redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+  // --- POWER BUTTON ---
+  powerBtn.addEventListener('click', () => {
+    isMonitorOn = !isMonitorOn;
+    monitorOn.classList.toggle('hidden', !isMonitorOn);
+    input.disabled = !isMonitorOn;
+    redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
 
-      if (!isMonitorOn) {
-        input.value = '';
-        monitorOverlayOne.style.display = 'none';
-        monitorOverlayOther.style.display = 'none';
-        monitorOverlayOne.textContent = '';
-        monitorOverlayOther.textContent = '';
-        output.textContent = '';
-      } else {
-        if (nameplateOther.classList.contains('hidden')) {
-          monitorOverlayOne.style.display = 'block';
-        } else {
-          monitorOverlayOther.style.display = 'block';
-        }
-      }
-    });
-
-    // SUBMIT BUTTON
-  redBtn.addEventListener('click', () => {
-  if (!isMonitorOn) return;
-
-  let typed = input.value.trim();
-  if (!typed) typed = "(nothing)";
-
-  redBtn.classList.add('hidden');
-  greenBtn.classList.remove('hidden');
-
-  if (nameplateOther.classList.contains('hidden')) {
-    // Desk One is active
-    monitorOverlayOne.style.display = 'block';
-    monitorOverlayOne.textContent = deskOneResponses[typed.toLowerCase()] || typed;
-  } else {
-    // Desk Other is active
-    monitorOverlayOther.style.display = 'block';
-    monitorOverlayOther.textContent = deskOtherResponses[typed.toLowerCase()] || typed;
-  }
-
-  setTimeout(() => {
-    greenBtn.classList.add('hidden');
-    redBtn.classList.remove('hidden');
-  }, 500);
-
-  input.value = '';
-});
-
-
-
-    // NAMEPLATE TOGGLE
-    nameplateOne.addEventListener('click', () => {
-      nameplateOne.classList.add('hidden');
-      nameplateOther.classList.remove('hidden');
-      extrasOne.classList.add('hidden');
-      extrasOther.classList.remove('hidden');
-
+    if (!isMonitorOn) {
+      // Reset overlays and monitor
+      input.value = '';
       monitorOverlayOne.style.display = 'none';
-      monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
-    });
-
-    nameplateOther.addEventListener('click', () => {
-      nameplateOther.classList.add('hidden');
-      nameplateOne.classList.remove('hidden');
-      extrasOther.classList.add('hidden');
-      extrasOne.classList.remove('hidden');
-
       monitorOverlayOther.style.display = 'none';
-      monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
-    });
+      monitorOverlayOne.textContent = '';
+      monitorOverlayOther.textContent = '';
+      output.textContent = '';
+    } else {
+      // Show overlay for active desk
+      if (nameplateOther.classList.contains('hidden')) {
+        monitorOverlayOne.style.display = 'block';
+      } else {
+        monitorOverlayOther.style.display = 'block';
+      }
+    }
+  });
 
-    // POPUPS
-    function showPopup(elementId) {
-      const existingPopup = document.getElementById('current-popup');
-      if (existingPopup) existingPopup.remove();
-      const popupSrc = `assets/shared/${elementId}-popup.png`;
+  // --- SUBMIT BUTTON ---
+  redBtn.addEventListener('click', () => {
+    if (!isMonitorOn) return;
 
-      const popup = document.createElement('img');
-      popup.id = 'current-popup';
-      popup.src = popupSrc;
-      popup.style.position = 'fixed';
-      popup.style.top = '30%';
-      popup.style.left = '30%';
-      popup.style.transform = 'translate(-30%, -30%)';
-      popup.style.zIndex = '600';
-      popup.style.width = '30vw';
-      popup.style.height = 'auto';
-      popup.style.cursor = 'pointer';
-      popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
-      popup.addEventListener('click', () => popup.remove());
-      document.body.appendChild(popup);
+    let typed = input.value.trim();
+    if (!typed) typed = "(nothing)";
+
+    redBtn.classList.add('hidden');
+    greenBtn.classList.remove('hidden');
+
+    if (nameplateOther.classList.contains('hidden')) {
+      // Desk One active
+      monitorOverlayOne.style.display = 'block';
+      monitorOverlayOne.textContent = deskOneResponses[typed.toLowerCase()] || typed;
+    } else {
+      // Desk Other active
+      monitorOverlayOther.style.display = 'block';
+      monitorOverlayOther.textContent = deskOtherResponses[typed.toLowerCase()] || typed;
     }
 
-    const interactiveElements = [
-      'rock', 'books', 'drawer-clickable-one',
-      'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
-    ];
+    setTimeout(() => {
+      redBtn.classList.remove('hidden');
+      greenBtn.classList.add('hidden');
+    }, 500);
 
-    interactiveElements.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('click', () => {
-        if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
-        if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
-        showPopup(id);
-      });
-    });
-
+    input.value = '';
   });
-  </script>
+
+  // --- NAMEPLATE TOGGLE ---
+  nameplateOne.addEventListener('click', () => {
+    nameplateOne.classList.add('hidden');
+    nameplateOther.classList.remove('hidden');
+    extrasOne.classList.add('hidden');
+    extrasOther.classList.remove('hidden');
+
+    monitorOverlayOne.style.display = 'none';
+    monitorOverlayOther.style.display = isMonitorOn ? 'block' : 'none';
+  });
+
+  nameplateOther.addEventListener('click', () => {
+    nameplateOther.classList.add('hidden');
+    nameplateOne.classList.remove('hidden');
+    extrasOther.classList.add('hidden');
+    extrasOne.classList.remove('hidden');
+
+    monitorOverlayOther.style.display = 'none';
+    monitorOverlayOne.style.display = isMonitorOn ? 'block' : 'none';
+  });
+
+  // --- POPUPS ---
+  function showPopup(elementId) {
+    const existingPopup = document.getElementById('current-popup');
+    if (existingPopup) existingPopup.remove();
+    const popupSrc = `assets/shared/${elementId}-popup.png`;
+
+    const popup = document.createElement('img');
+    popup.id = 'current-popup';
+    popup.src = popupSrc;
+    popup.style.position = 'fixed';
+    popup.style.top = '30%';
+    popup.style.left = '30%';
+    popup.style.transform = 'translate(-30%, -30%)';
+    popup.style.zIndex = '600';
+    popup.style.width = '30vw';
+    popup.style.height = 'auto';
+    popup.style.cursor = 'pointer';
+    popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+    popup.addEventListener('click', () => popup.remove());
+    document.body.appendChild(popup);
+  }
+
+  const interactiveElements = [
+    'rock', 'books', 'drawer-clickable-one',
+    'crystal-ball', 'dice', 'pendant', 'hummels', 'hummels2', 'drawer-clickable-other'
+  ];
+
+  interactiveElements.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', () => {
+      if (id.includes('-one') && nameplateOne.classList.contains('hidden')) return;
+      if (id.includes('-other') && nameplateOther.classList.contains('hidden')) return;
+      showPopup(id);
+    });
+  });
+
+});
+</script>
 </body>
 </html>
