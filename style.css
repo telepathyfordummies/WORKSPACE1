@@ -210,3 +210,13 @@ body {
   display: block;
   object-fit: contain;
 }
+
+#hummels2 {
+  position: absolute;
+  top: 1170px;
+  left: 90px;
+  z-index: 310;
+  cursor: pointer;
+  display: block;
+  object-fit: contain;
+}
