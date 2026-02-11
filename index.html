@@ -99,54 +99,55 @@ document.addEventListener('DOMContentLoaded', () => {
     "help": "I'm trying.",
     "tweek": "The Resonant",
     "craig": "Bearer of Calm",
-    "Wendy": "Maiden of Silence",
-    "Stan": "Griefbound",
-    "Clyde": "Time Knight",
-    "Bebe": "The Prism",
-    "Heather": "A lie",
-    "Tammy": "The Pull", 
-    "Stripe": "...",
-    "Leo": "The Staticborn",
-    "Marj": "The Lucky One",
-    "Kenny": "Kenny",
-    "Damien": "The Commandeer",
-    "Henrietta": "The Ashkeeper",
-    "Dovakien": "The Negative",
-    "Michael": "The Last Teather",
-    "Pete": "Warden of Collapse",
-    "Cartman": "The Borrower",
-    "Kyle": "The Voice",
-    "Red": "The Warrior of Rage",
-    "Heidi": "Feedback",
-    "Tolkien": "The Healer",
-    "Christophe": "Soldier of Echoes",
-    "Rebecca": "The Shield",
-    "Brimmy": "The Circuit",
-    "White Rabbit": "...",
-    "Elias": "You’re not there yet.",
-    "God": "Stop.",
-    "Core": "Who sent you?",
-    "Boyscout": "My heart breaks for him.",
-    "Logs": "There are many.", 
-    "Future Vision": "I unfortunately cannot undo all the damage The Other has done.",
-    "The Other": "The reason we survived.", 
-    "The Original Family": "You're not there yet.",
-    "Entropy": "...",
-    "Hunger": "This was literal, in that context.",
-    "Death": "...",
-    "Four Corners": "You're not there yet.",
-    "The Blight": "You're not there yet.",
-    "Love": "I've never been so lucky to know it, even now.",
-    "Straya": "I was lucky to see it once before.",
-    "Mods": "I cannot speak on a universe I do not know.",
-    "Corechat": "My beginning, my end. I wouldn't ask for less.",
-    "Rock": "Gifts",
-    "Rocks": "Gifts",
-    "Gum": "The Other always stole it from me...",
-    "Books": "In another life, I loved to read.",
-    "Server": "Home.",
-    "Severance": "A cycle of endings",
-    "Diet Coke": "Sentimentality."
+    "wendy": "Maiden of Silence",
+    "stan": "Griefbound",
+    "clyde": "Time Knight",
+    "bebe": "The Prism",
+    "heather": "A lie",
+    "tammy": "The Pull", 
+    "stripe": "...",
+    "leo": "The Staticborn",
+    "marj": "The Lucky One",
+    "kenny": "Kenny",
+    "damien": "The Commandeer",
+    "henrietta": "The Ashkeeper",
+    "dovakien": "The Negative",
+    "michael": "The Last Teather",
+    "pete": "Warden of Collapse",
+    "cartman": "The Borrower",
+    "kyle": "The Voice",
+    "red": "The Warrior of Rage",
+    "heidi": "Feedback",
+    "tolkien": "The Healer",
+    "christophe": "Soldier of Echoes",
+    "rebecca": "The Shield",
+    "brimmy": "The Circuit",
+    "white rabbit": "...",
+    "elias": "You’re not there yet.",
+    "god": "Stop.",
+    "core": "Who sent you?",
+    "boyscout": "My heart breaks for him.",
+    "logs": "There are many.", 
+    "future vision": "I unfortunately cannot undo all the damage The Other has done.",
+    "the other": "The reason we survived.", 
+    "the original family": "You're not there yet.",
+    "entropy": "...",
+    "hunger": "This was literal, in that context.",
+    "death": "...",
+    "four corners": "You're not there yet.",
+    "the blight": "You're not there yet.",
+    "blight": "You're not there yet.",
+    "love": "I've never been so lucky to know it, even now.",
+    "straya": "I was lucky to see it once before.",
+    "mods": "I cannot speak on a universe I do not know.",
+    "corechat": "My beginning, my end. I wouldn't ask for less.",
+    "rock": "Gifts",
+    "rocks": "Gifts",
+    "gum": "The Other always stole it from me...",
+    "books": "In another life, I loved to read.",
+    "server": "Home.",
+    "severance": "A cycle of endings",
+    "diet coke": "Sentimentality."
 
   };
   const deskOtherResponses = {
@@ -180,41 +181,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- SUBMIT BUTTON ---
-  redBtn.addEventListener('click', () => {
-    if (!isMonitorOn) return;
+ // --- SUBMIT BUTTON ---
+redBtn.addEventListener('click', () => {
+  if (!isMonitorOn) return;
 
-    let typed = input.value.trim();
-    if (!typed) typed = "[INPUT NOT FOUND.]";
+  const normalized = input.value.trim().toLowerCase();
 
-    redBtn.classList.add('hidden');
-    greenBtn.classList.remove('hidden');
+  redBtn.classList.add('hidden');
+  greenBtn.classList.remove('hidden');
 
-    if (nameplateOther.classList.contains('hidden')) {
-      // Desk One active
-      monitorOverlayOne.style.display = 'block';
-      const response = deskOneResponses[typed.toLowerCase()];
+  if (nameplateOther.classList.contains('hidden')) {
+    // Desk One active
+    monitorOverlayOne.style.display = 'block';
 
-monitorOverlayOne.textContent =
-  response ? response : "[INPUT NOT FOUND.]";
+    const response = deskOneResponses[normalized];
+    monitorOverlayOne.textContent = response || "[INPUT NOT FOUND.]";
 
-    } else {
-      // Desk Other active
-      monitorOverlayOther.style.display = 'block';
-      const response = deskOtherResponses[typed.toLowerCase()];
+  } else {
+    // Desk Other active
+    monitorOverlayOther.style.display = 'block';
 
-monitorOverlayOther.textContent =
-  response ? response : "[INPUT NOT FOUND.]";
+    const response = deskOtherResponses[normalized];
+    monitorOverlayOther.textContent = response || "[INPUT NOT FOUND.]";
+  }
 
-    }
+  setTimeout(() => {
+    redBtn.classList.remove('hidden');
+    greenBtn.classList.add('hidden');
+  }, 500);
 
-    setTimeout(() => {
-      redBtn.classList.remove('hidden');
-      greenBtn.classList.add('hidden');
-    }, 500);
-
-    input.value = '';
-  });
+  input.value = '';
+});
 
   // --- NAMEPLATE TOGGLE ---
   nameplateOne.addEventListener('click', () => {
