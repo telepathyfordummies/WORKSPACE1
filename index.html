@@ -341,14 +341,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- LIGHTNING STORM ---
- function triggerLightning() {
+ // --- LIGHTNING STORM ---
+function triggerLightning() {
   // Only trigger if Other desk is active and monitor is on
   if (!backgroundOther || !isMonitorOn) return;
   if (nameplateOther.classList.contains('hidden')) return;
 
-  // FLASH
+  // FLASH: first strike
   backgroundOther.classList.add('lightning-flash');
+
+  // Optional quick second flash for flicker
+  setTimeout(() => {
+    if (Math.random() < 0.3) { // 30% chance of tiny flicker
+      backgroundOther.classList.remove('lightning-flash');
+      setTimeout(() => backgroundOther.classList.add('lightning-flash'), 50);
+    }
+  }, 100);
 
   // THUNDER simultaneously (60% chance)
   if (Math.random() < 0.6) {
@@ -357,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
     thunderAudio.play().catch(() => {});
   }
 
-  // Remove flash after 250ms
+  // Remove flash after 250ms (or after flicker)
   setTimeout(() => backgroundOther.classList.remove('lightning-flash'), 250);
 }
 
