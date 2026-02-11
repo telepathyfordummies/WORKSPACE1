@@ -75,8 +75,8 @@
   <audio id="thunder-audio" src="assets/audio/thunder-audio.mp3" preload="auto"></audio>
 
   <!-- Ambient Audio Speicifcally, yes I'm separating them -->
-<audio id="ambient-one" src="assets/audio/one-ambient.mp3" preload="auto" loop autoplay></audio>
-<audio id="ambient-other" src="assets/audio/other-ambient.mp3" preload="auto" loop autoplay></audio>
+<audio id="ambient-one" src="assets/audio/one-ambient.mp3" preload="auto" loop></audio>
+<audio id="ambient-other" src="assets/audio/other-ambient.mp3" preload="auto" loop></audio>
 
 
 
@@ -86,6 +86,26 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // --- DOM ELEMENTS ---
+
+  // --- AMBIENT AUDIO ---
+const ambientOne = document.getElementById('ambient-one');
+const ambientOther = document.getElementById('ambient-other');
+let ambientStarted = false;
+
+function startAmbient() {
+  if (ambientStarted) return;
+  ambientStarted = true;
+
+  // Set volumes
+  ambientOne.volume = 0.3;
+  ambientOther.volume = 0.3;
+
+  // Play both audios; browser allows play because user just clicked
+  ambientOne.play().catch(() => {});
+  ambientOther.play().catch(() => {});
+}
+
+  // ---OTHER DOM STUFF
   const powerBtn = document.getElementById('power-btn');
   const monitorOn = document.getElementById('monitor-on');
   const input = document.getElementById('real-input');
@@ -235,11 +255,36 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 // --- POWER BUTTON ---
-  powerBtn.addEventListener('click', () => {
-    isMonitorOn = !isMonitorOn;
-    monitorOn.classList.toggle('hidden', !isMonitorOn);
-    input.disabled = !isMonitorOn;
-    redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+ powerBtn.addEventListener('click', () => {
+  // Start ambient audio on first user interaction
+  startAmbient();
+
+  isMonitorOn = !isMonitorOn;
+  monitorOn.classList.toggle('hidden', !isMonitorOn);
+  input.disabled = !isMonitorOn;
+  redBtn.style.pointerEvents = isMonitorOn ? 'auto' : 'none';
+
+  // reset overlays when turning off
+  if (!isMonitorOn) {
+    input.value = '';
+    monitorOverlayOne.style.display = 'none';
+    monitorOverlayOther.style.display = 'none';
+    monitorOverlayOne.textContent = '';
+    monitorOverlayOther.textContent = '';
+  } else {
+    // show overlay for active desk
+    if (nameplateOther.classList.contains('hidden')) {
+      monitorOverlayOne.style.display = 'flex';
+    } else {
+      monitorOverlayOther.style.display = 'flex';
+    }
+  }
+
+  // optional: little thunder effect when turning on
+  thunderAudio.currentTime = 0;
+  thunderAudio.play().catch(() => {});
+});
+
 
     // reset overlays when turning off
     if (!isMonitorOn) {
@@ -411,40 +456,6 @@ updateStorm();
 nameplateOne.addEventListener('click', updateStorm);
 nameplateOther.addEventListener('click', updateStorm);
 
-  // --- AMBIENT AUDIO ---
-const ambientOne = new Audio('assets/audio/one-ambient.mp3');
-const ambientOther = new Audio('assets/audio/other-ambient.mp3');
-
-ambientOne.loop = true;
-ambientOther.loop = true;
-
-// Initial volumes
-ambientOne.volume = 0.5; // Desk One audible
-ambientOther.volume = 0; // Desk Other muted
-
-// Start playback immediately
-ambientOne.play().catch(() => {});
-ambientOther.play().catch(() => {});
-
-// Function to update volumes based on active desk
-function updateAmbientVolumes() {
-  if (nameplateOther.classList.contains('hidden')) {
-    // Desk One active
-    ambientOne.volume = 0.5;
-    ambientOther.volume = 0;
-  } else {
-    // Desk Other active
-    ambientOne.volume = 0;
-    ambientOther.volume = 0.5;
-  }
-}
-
-// Call whenever desks are toggled
-nameplateOne.addEventListener('click', updateAmbientVolumes);
-nameplateOther.addEventListener('click', updateAmbientVolumes);
-
-// Set correct volume initially
-updateAmbientVolumes();
 
 
 
