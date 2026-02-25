@@ -415,6 +415,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const normalized = input.value.trim().toLowerCase();
 
+    if (normalized === "companionship") {
+  window.location.href = "https://archiveofourown.org/works/80214946/chapters/210590961";
+  return;
+}
+
     redBtn.classList.add('hidden');
     greenBtn.classList.remove('hidden');
 
