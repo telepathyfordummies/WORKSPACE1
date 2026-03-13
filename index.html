@@ -538,7 +538,29 @@ interactiveElements.forEach(id => {
     showPopup(id);
   });
   });
+  
+// video response element shit
+const video = document.createElement('video');
+video.src = 'assets/outputs/rickroll.mp4';
+video.className = 'monitor-video';
+video.autoplay = true;
+video.controls = true;
+video.volume = 1;
 
+// Pause ambient sounds while video plays
+ambientOne.pause();
+ambientOther.pause();
+
+// Clear previous overlay content and add the video
+monitorOverlayOther.innerHTML = ''; // or monitorOverlayOne if Desk One
+monitorOverlayOther.appendChild(video);
+
+// When video ends, resume ambient sounds
+video.addEventListener('ended', () => {
+  ambientOne.play().catch(() => {});
+  ambientOther.play().catch(() => {});
+  monitorOverlayOther.innerHTML = ''; // remove video from overlay
+});
 });
 
 </script>
