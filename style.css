@@ -268,6 +268,7 @@ body {
   z-index: 610; /* higher than text overlay so it goes on top flor the love of hell though please keep track of ur z index this is ur highest rn */
   overflow: hidden; /* video fills container */
 }
+
 .monitor-video {
   width: 100%;
   height: 100%;
