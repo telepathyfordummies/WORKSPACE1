@@ -538,39 +538,6 @@ interactiveElements.forEach(id => {
     showPopup(id);
   });
   });
-// Create video element fuck fuck fuck
-const video = document.createElement('video');
-video.src = 'assets/outputs/rickroll.mp4';
-video.className = 'monitor-video';
-video.loop = false;  // or true if you want it to repeat
-video.autoplay = true;
-video.controls = true;
-video.volume = 1;
-
-// Pause ambient audio while video plays if this works this is like the whole point
-ambientOne.pause();
-ambientOther.pause();
-
-// Append video to monitor overlay ???
-monitorOverlayOne.innerHTML = '';  // Clear previous content
-monitorOverlayOne.appendChild(video);
-
-// Play the video (just in case autoplay is blocked but also i dont think autoplay gets blcoked but leave this here just in case)
-video.play().catch(() => {});
-
-video.addEventListener('ended', () => {
-  ambientOne.play().catch(() => {});
-  ambientOther.play().catch(() => {});
-});
-
-
-function stopVideoAndResumeAudio() {
-  video.pause();
-  monitorOverlayOne.innerHTML = '';
-  ambientOne.play().catch(() => {});
-  ambientOther.play().catch(() => {});
-}
-  
 
 });
 
