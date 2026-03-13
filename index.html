@@ -335,8 +335,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ambientStarted) return;
     ambientStarted = true;
 
-    ambientOne.volume = 0.3;
-    ambientOther.volume = 0.3;
+    ambientOne.volume = 0.2;
+    ambientOther.volume = 0.2;
 
     ambientOne.play().catch(() => {});
     ambientOther.play().catch(() => {});
@@ -425,30 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const normalized = input.value.trim().toLowerCase();
 
-     // VIDEO OUTPUTS
- if (normalized === "rick roll") { // or "video prompt"
-  pauseAmbient(); // stop all ambient sounds
-
-  const video = document.createElement('video');
-  video.src = 'assets/outputs/rickroll.mp4';
-  video.autoplay = true;
-  video.controls = true;
-  video.volume = 1;
-
-  monitorOverlayOther.innerHTML = ''; // clear previous overlay
-  monitorOverlayOther.appendChild(video);
-  monitorOverlayOther.style.display = 'flex';
-
-  // Resume ambient when video ends
-  video.addEventListener('ended', () => {
-    resumeAmbient();
-    monitorOverlayOther.innerHTML = ''; // remove video
-  });
-
-  input.value = '';
-  return; // prevent text responses
-}
-
     if (normalized === "companionship") {
   window.location.href = "https://archiveofourown.org/works/80214946/chapters/210590961";
   return;
@@ -526,6 +502,13 @@ pageCollectAudio.volume = 0.4;
 
 const drawerOpenAudio = new Audio('assets/audio/drawer-open.mp3');
 drawerOpenAudio.volume = 0.4;
+
+  // --- VIDEO OUTPUT ---
+  const video = document.createElement('video');
+video.src = 'assets/outputs/rickroll.mp4';
+video.autoplay = true;
+video.controls = true;
+video.volume = 1; // full volume
 
 // --- INTERACTIVE ELEMENTS ---
 const interactiveElements = [
