@@ -435,10 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nameplateOther.classList.contains('hidden')) {
       monitorOverlayOne.style.display = 'flex';
-      monitorOverlayOne.textContent = deskOneResponses[normalized] || "[INPUT NOT FOUND.]";
+      monitorOverlayOne.innerHTML = deskOneResponses[normalized] || "[INPUT NOT FOUND.]";
     } else {
       monitorOverlayOther.style.display = 'flex';
-      monitorOverlayOther.textContent = deskOtherResponses[normalized] || "[INPUT NOT FOUND.]";
+      monitorOverlayOther.innerHTML = deskOtherResponses[normalized] || "[INPUT NOT FOUND.]";
     }
 
     setTimeout(() => {
