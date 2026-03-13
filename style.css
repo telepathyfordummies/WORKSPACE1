@@ -252,4 +252,9 @@ body {
   filter: brightness(2.0);
 }
 
+.monitor-overlay img {
+  width: 600px;
+  height: 550px;
+}
+
 
