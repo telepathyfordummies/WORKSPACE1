@@ -257,8 +257,20 @@ body {
   height: 550px;
 }
 
+.monitor-overlay-video {
+  position: absolute;
+  top: 480px;   /* same position as monitor */
+  left: 240px;
+  width: 600px; /* match monitor width */
+  height: 550px; /* match monitor height */
+  background: rgba(0,0,0,0);
+  display: none;
+  z-index: 610; /* higher than text overlay so it goes on top flor the love of hell though please keep track of ur z index this is ur highest rn */
+  overflow: hidden; /* video fills container */
+}
 .monitor-video {
-  width: 100%;        /* fill the container width */
-  height: 100%;       /* fill the container height */
-  object-fit: cover;  /* scale video to cover the container without distortion */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill monitor completely?? prayfully...? */
+  display: block;
 }
