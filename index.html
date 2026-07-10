@@ -508,6 +508,15 @@ document.addEventListener('DOMContentLoaded', () => {
   return;
 }
 
+        // Only on One's desk
+if (
+  normalized === "deadspace" &&
+  nameplateOther.classList.contains('hidden')
+) {
+  window.location.href = "https://archiveofourown.org/works/88267106";
+  return;
+}
+
     redBtn.classList.add('hidden');
     greenBtn.classList.remove('hidden');
 
